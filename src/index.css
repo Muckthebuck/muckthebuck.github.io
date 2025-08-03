@@ -1,0 +1,81 @@
+/* index.css */
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+svg {
+  background: #f9f9f9;
+  display: block;
+  margin: 0 auto;
+}
+
+circle {
+  transition: r 0.2s, fill 0.2s, opacity 0.2s;
+  cursor: pointer;
+}
+
+line {
+  transition: stroke-opacity 0.2s;
+}
+
+circle.minimized {
+  opacity: 0.3;
+}
+
+circle.highlighted {
+  opacity: 1;
+  stroke: #ff9800;
+  stroke-width: 3;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  /* Optional: add padding if needed */
+}
+
+.projects-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+  width: 95vw;           /* Use most of the viewport width */
+  box-sizing: border-box;
+}
+
+.graph-container {
+  flex: 1 1 400px;
+  min-width: 320px;
+  max-width: 600px;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+.project-panel-container {
+  flex: 1 1 350px;
+  min-width: 320px;
+  max-width: 600px;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 900px) {
+  .projects-section {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .graph-container,
+  .project-panel-container {
+    max-width: 100%;
+    min-width: 0;
+  }
+}

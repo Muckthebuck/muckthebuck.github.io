@@ -1,0 +1,50 @@
+[
+  {
+    "id": "p1",
+    "title": "Graph Portfolio",
+    "description": "Visual portfolio using interactive tags and bubbles.",
+    "fullDescription": "Graph Portfolio is a dynamic, interactive interface built using React and D3. It visualizes projects as bubbles categorized by tags, allowing users to filter and explore visually.",
+    "tags": ["React", "D3", "Visualization"],
+    "link": "https://github.com/yourname/graph-portfolio",
+    "githubLink": "https://github.com/yourname/graph-portfolio",
+    "bannerImage": "/images/graph-portfolio-banner.jpg"
+  },
+  {
+    "id": "p2",
+    "title": "Personal Blog",
+    "description": "A blog to share my thoughts and experiences.",
+    "fullDescription": "Built with React and TypeScript, this blog supports markdown content, dark mode, and a clean writing-focused layout.",
+    "tags": ["React", "TypeScript", "Blog"],
+    "link": "https://github.com/yourname/personal-blog"
+  },
+  {
+    "id": "p3",
+    "title": "E-commerce Store",
+    "description": "An online store built with React and Redux.",
+    "fullDescription": "A responsive e-commerce platform featuring a product catalog, cart functionality, and checkout flow. Integrated with Stripe for payment.",
+    "tags": [ "Redux", "E-commerce"],
+    "link": "https://github.com/yourname/ecommerce-store",
+    "githubLink": "https://github.com/yourname/ecommerce-store",
+    "paperLink": "https://arxiv.org/abs/9999.99999"
+  },
+  {
+    "id": "p4",
+    "title": "Weather App",
+    "description": "A weather application that fetches data from a weather API.",
+    "fullDescription": "Simple weather app that pulls data from OpenWeather API. Features temperature toggling and search history saved in localStorage.",
+    "tags": ["React", "API", "Weather"],
+    "link": "https://github.com/yourname/weather-app",
+    "bannerImage": "/images/weather-app-banner.jpg"
+  },
+  {
+    "id": "p5",
+    "title": "Portfolio Website",
+    "description": "My personal portfolio showcasing my projects and skills.",
+    "fullDescription": "A sleek developer portfolio with sections for projects, resume, and contact. Responsive, accessible, and deployed via GitHub Pages.",
+    "tags": ["React", "Portfolio", "Web Development"],
+    "link": "https://github.com/yourname/portfolio-website",
+    "githubLink": "https://github.com/yourname/portfolio-website",
+    "paperLink": "https://arxiv.org/abs/1234.56789",
+    "bannerImage": "/images/portfolio-website-banner.jpg"
+  }
+]
