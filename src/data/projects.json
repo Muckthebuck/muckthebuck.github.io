@@ -21,7 +21,7 @@
     "id": "AI_PA",
     "title": "AI_PA (Game Search Agent)",
     "description": "A* search algorithm implementation for game agents.",
-    "fullDescription": "An AI project implementing search algorithms for game agents with heuristic optimizations.",
+    "fullDescription": "The first part of an AI project implementing search algorithms for game agents with heuristic optimizations.",
     "tags": ["Python", "A*"],
     "link": "https://github.com/Muckthebuck/AI_PA",
     "githubLink": "https://github.com/Muckthebuck/AI_PA"
@@ -38,10 +38,19 @@
   {
     "id": "PointNet",
     "title": "PointNet Implementation",
-    "description": "Reimplementation of the PointNet architecture for point cloud classification.",
+    "description": "Reimplementation of the PointNet architecture for point cloud classification and segmentation.",
     "fullDescription": "Clean from‑scratch implementation of PointNet with Python and PyTorch, maintaining permutation invariance and max‑pooling.",
     "tags": ["Python", "Deep Learning", "Point Cloud", "Pytorch", "Classification", "Segmentation", "3D Deep Learning"],
     "link": "https://github.com/Muckthebuck/PointNet",
     "githubLink": "https://github.com/Muckthebuck/PointNet"
+  },
+  {
+    "id": "Wasserstein_Image_Morphing",
+    "title": "Wasserstein Image Morphing",
+    "description": "Image morphing using Wasserstein distance and Optimal Transport paths across RGB channels.",
+    "fullDescription": "This project demonstrates smooth morphing between two images by interpolating along the Optimal Transport (OT) path for each RGB channel using the Wasserstein distance. It uses `ott-jax` for efficient Sinkhorn solver implementation and leverages JAX for high-performance numerical computing. The result is a visually coherent transformation that preserves structure across color channels.",
+    "githubLink": "https://github.com/Muckthebuck/wasserstein_projection",
+    "tags": ["Python","JAX", "ott-jax", "NumPy", "Matplotlib", "scikit-image", "Optimal Transport"],
+    "bannerImage": "/images/morph.gif"
   }
 ]

@@ -124,6 +124,16 @@
   color: #333;
 }
 
+.modal-banner-image {
+  max-width: 100%;      /* Don't exceed the modal width */
+  max-height: 300px;    /* Limit height so it doesn't get too tall */
+  width: auto;          /* Maintain aspect ratio */
+  height: auto;         /* Maintain aspect ratio */
+  object-fit: contain;  /* Contain the entire image inside box */
+  border-radius: 8px;   /* Optional: rounded corners */
+  display: block;       /* Removes bottom gap */
+  margin: 0 auto 1rem;  /* Center and add spacing below */
+}
 
 
 /* Hover card (Notion style) */
