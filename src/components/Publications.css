@@ -1,0 +1,38 @@
+.publications-section {
+  padding: 3rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.publications-list {
+  list-style: none;
+  padding: 0;
+}
+
+.publication-item {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
+}
+
+.publication-title a {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+.publication-title a:hover {
+  text-decoration: underline;
+}
+
+.publication-meta {
+  color: #666;
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+.highlight-name {
+  font-weight: bold !important;
+  color: black !important;
+  display: inline !important;
+}

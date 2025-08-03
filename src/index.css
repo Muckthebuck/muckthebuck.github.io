@@ -53,10 +53,10 @@ main {
 
 .graph-container {
   flex: 1 1 400px;
-  min-width: 320px;
+  min-width: 500px;
   max-width: 600px;
   box-sizing: border-box;
-  overflow-x: auto;
+  overflow: hidden;
 }
 
 .project-panel-container {
@@ -64,7 +64,11 @@ main {
   min-width: 320px;
   max-width: 600px;
   box-sizing: border-box;
-  overflow-x: auto;
+  overflow: hidden;
+}
+.graph-container,
+.project-panel-container {
+  flex: 1 1 100%;
 }
 
 /* Responsive: stack vertically on small screens */
@@ -79,3 +83,29 @@ main {
     min-width: 0;
   }
 }
+.graph-tip {
+  display: inline-block;
+  background: #f1f8ff;
+  border-left: 4px solid #007acc;
+  color: #1a1a1a;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.graph-tip {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

@@ -56,3 +56,102 @@ export function generateGraphData(projects: Project[]): { nodes: GraphNode[]; li
 
   return { nodes, links };
 }
+
+
+// import { Project } from '../types/Project';
+// import { tagHierarchy } from './tagHierarchy';
+
+// export interface GraphNode extends d3.SimulationNodeDatum {
+//   id: string;
+//   tag: string;
+//   projectCount: number;
+//   hierarchyLevel?: number;
+//   degree?: number;
+// }
+
+// export interface GraphLink extends d3.SimulationLinkDatum<GraphNode> {
+//   source: string | GraphNode;
+//   target: string | GraphNode;
+// }
+
+// export function generateGraphData(projects: Project[]): { nodes: GraphNode[]; links: GraphLink[] } {
+//   const tagCount: Record<string, number> = {};
+//   const nodesMap: Map<string, GraphNode> = new Map();
+//   const links: GraphLink[] = [];
+
+//   // Count tags from projects
+//   for (const project of projects) {
+//     for (const tag of project.tags) {
+//       tagCount[tag] = (tagCount[tag] || 0) + 1;
+//     }
+//   }
+
+//   // Flatten hierarchy into parent-child edges and assign levels
+//   const visited = new Set<string>();
+//   const queue: { tag: string; level: number }[] = [];
+
+//   for (const root in tagHierarchy) {
+//     queue.push({ tag: root, level: 1 });
+//   }
+
+//   while (queue.length) {
+//     const { tag, level } = queue.shift()!;
+
+//     if (visited.has(tag)) continue;
+//     visited.add(tag);
+
+//     if (!nodesMap.has(tag)) {
+//       nodesMap.set(tag, {
+//         id: tag,
+//         tag,
+//         projectCount: tagCount[tag] || 0,
+//         hierarchyLevel: level,
+//         degree: 0,
+//       });
+//     }
+
+//     const children = tagHierarchy[tag] || [];
+//     for (const child of children) {
+//       // Create child node if not present
+//       if (!nodesMap.has(child)) {
+//         nodesMap.set(child, {
+//           id: child,
+//           tag: child,
+//           projectCount: tagCount[child] || 0,
+//           hierarchyLevel: level + 1,
+//           degree: 0,
+//         });
+//       }
+
+//       links.push({ source: tag, target: child });
+
+//       queue.push({ tag: child, level: level + 1 });
+//     }
+//   }
+
+//   // Add nodes that were in projects but not in hierarchy
+//   for (const tag of Object.keys(tagCount)) {
+//     if (!nodesMap.has(tag)) {
+//       nodesMap.set(tag, {
+//         id: tag,
+//         tag,
+//         projectCount: tagCount[tag],
+//         hierarchyLevel: 5, // fallback level
+//         degree: 0,
+//       });
+//     }
+//   }
+
+//   // Compute degree
+//   for (const link of links) {
+//     const sourceId = typeof link.source === 'string' ? link.source : link.source.id;
+//     const targetId = typeof link.target === 'string' ? link.target : link.target.id;
+//     nodesMap.get(sourceId)!.degree! += 1;
+//     nodesMap.get(targetId)!.degree! += 1;
+//   }
+
+//   return {
+//     nodes: Array.from(nodesMap.values()),
+//     links,
+//   };
+// }

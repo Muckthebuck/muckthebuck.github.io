@@ -11,7 +11,7 @@ const TopBar: React.FC = () => (
         <li><a href="#projects">Projects</a></li>
         <li><a href="#publications">Publications</a></li>
         <li><a href="/mchodhary-cv.pdf"rel="noopener noreferrer">CV</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="mailto:mukulchodhary1@gmail.com">Contact</a></li>
       </ul>
     </div>
   </nav>

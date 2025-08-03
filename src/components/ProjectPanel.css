@@ -2,11 +2,10 @@
   width: 100%;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 240px));
   gap: 2rem;
   padding: 1rem 0;
 }
-
 /* Card styles */
 .project-card {
   text-decoration: none;
@@ -17,11 +16,13 @@
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
-  min-height: 180px;
+  min-height: 160px;
+  max-width: none; 
   display: block;
   flex-direction: column;
   justify-content: flex-end;
 }
+
 
 .project-card:hover {
   transform: translateY(-6px) scale(1.03);
@@ -120,6 +121,7 @@
   gap: 2rem;
   justify-content: left;
   margin: 1rem 0;
+  color: #333;
 }
 
 
@@ -195,4 +197,28 @@
   line-height: 1.4;
   margin-top: 0.5rem;
   color: #333;
+}
+
+.pagination-controls {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pagination-controls button {
+  background-color: #2b6cb0;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pagination-controls button:disabled {
+  background-color: #bbb;
+  cursor: default;
 }

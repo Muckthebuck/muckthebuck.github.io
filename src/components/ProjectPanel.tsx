@@ -16,14 +16,26 @@ const GitHubIcon = FaGithub as React.ElementType;
 const PaperIcon = PiNewspaperClippingLight as React.ElementType;
 const LinkIcon = IoIosLink as React.ElementType;
 
+const ITEMS_PER_PAGE = 4; // adjust per screen size/responsiveness
+
 const ProjectPanel: React.FC<ProjectPanelProps> = ({ projects, tagColorScale }) => {
   const [hoveredProjectId, setHoveredProjectId] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.ceil(projects.length / ITEMS_PER_PAGE);
+  const paginatedProjects = projects.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+  const handlePrev = () => setCurrentPage((p) => Math.max(p - 1, 1));
+  const handleNext = () => setCurrentPage((p) => Math.min(p + 1, totalPages));
 
   return (
     <>
       <div className="project-gallery">
-        {projects.map(project => (
+        {paginatedProjects.map((project) => (
           <div
             className="project-card"
             key={project.id}
@@ -47,14 +59,25 @@ const ProjectPanel: React.FC<ProjectPanelProps> = ({ projects, tagColorScale }) 
                   </span>
                 ))}
               </div>
-              <div className="project-description">
-                {project.description}
-              </div>
+              <div className="project-description">{project.description}</div>
             </div>
-
           </div>
         ))}
       </div>
+
+      {totalPages > 1 && (
+        <div className="pagination-controls">
+          <button onClick={handlePrev} disabled={currentPage === 1}>
+            ◀ Prev
+          </button>
+          <span>
+            Page {currentPage} of {totalPages}
+          </span>
+          <button onClick={handleNext} disabled={currentPage === totalPages}>
+            Next ▶
+          </button>
+        </div>
+      )}
 
       {selectedProject && (
         <div
@@ -74,9 +97,7 @@ const ProjectPanel: React.FC<ProjectPanelProps> = ({ projects, tagColorScale }) 
             ) : (
               <div className="modal-banner-placeholder" />
             )}
-
             <h2>{selectedProject.title}</h2>
-
             <div className="project-tags" style={{ marginBottom: '1rem' }}>
               {selectedProject.tags.map(tag => (
                 <span
@@ -88,61 +109,33 @@ const ProjectPanel: React.FC<ProjectPanelProps> = ({ projects, tagColorScale }) 
                 </span>
               ))}
             </div>
-
-          <div className="modal-links">
+            <div className="modal-links">
               {selectedProject.link && (
-              <a
-                href={selectedProject.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Link"
-                className="modal-link-button"
-              >
-                <LinkIcon style={{ fontSize: '1.4rem' }} />
-                <span>Link</span>
-              </a>
-            )}
-            {selectedProject.githubLink && (
-              <a
-                href={selectedProject.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="modal-link-button"
-              >
-                <GitHubIcon style={{ fontSize: '1.4rem' }} />
-                <span>GitHub</span>
-              </a>
-            )}
-
-            {selectedProject.paperLink && (
-              <a
-                href={selectedProject.paperLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Paper"
-                className="modal-link-button"
-              >
-                <PaperIcon style={{ fontSize: '1.4rem' }} />
-                <span>Paper</span>
-              </a>
-            )}
-          </div>
-
+                <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className='modal-link-button'>
+                  <LinkIcon style={{ fontSize: '1.4rem' }} />
+                  <span>Link</span>
+                </a>
+              )}
+              {selectedProject.githubLink && (
+                <a href={selectedProject.githubLink} target="_blank" rel="noopener noreferrer" className='modal-link-button'>
+                  <GitHubIcon style={{ fontSize: '1.4rem' }} />
+                  <span>GitHub</span>
+                </a>
+              )}
+              {selectedProject.paperLink && (
+                <a href={selectedProject.paperLink} target="_blank" rel="noopener noreferrer" className='modal-link-button'>
+                  <PaperIcon style={{ fontSize: '1.4rem' }} />
+                  <span>Paper</span>
+                </a>
+              )}
+            </div>
             <p>{selectedProject.fullDescription}</p>
-
-            <button
-              className="modal-close-button"
-              onClick={() => setSelectedProject(null)}
-              aria-label="Close modal"
-            >
-              Close
-            </button>
           </div>
         </div>
       )}
     </>
   );
 };
+
 
 export default ProjectPanel;

@@ -1,10 +1,12 @@
 import React from 'react';
-import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaFileAlt, FaEnvelopeOpen, FaCopy } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import './Intro.css';
 const GitHubIcon =  FaGithub as React.ElementType;
 const LinkedInIcon = FaLinkedin as React.ElementType;
 const CVIcon = FaFileAlt as React.ElementType;
+const MailIcon = FaEnvelopeOpen as React.ElementType;
+const CopyIcon = FaCopy as React.ElementType;
 const interests = [
     { label: 'Computer Vision', icon: '📷' },
     { label: '3D Asset generation', icon: '🖼️' },
@@ -19,6 +21,14 @@ const interests = [
 ];
 
 const Intro: React.FC = () => {
+    const [copied, setCopied] = React.useState(false);
+
+    const handleCopyEmail = () => {
+    navigator.clipboard.writeText('mukulchodhary1@gmail.com');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
+    };
+
   return (
     <section id="home" className="home-intro">
       <div className="blurred-bg" />
@@ -43,6 +53,14 @@ const Intro: React.FC = () => {
             <a href="https://linkedin.com/in/mukulchodhary" target="_blank" rel="noopener noreferrer">
               <LinkedInIcon /> LinkedIn
             </a>
+            <a href="mailto:mukulchodhary1@gmail.com" target="_blank" rel="noopener noreferrer">
+                    <MailIcon /> Email
+            </a>
+             <button onClick={handleCopyEmail} title="Copy email"> 
+                    <CopyIcon /> Copy Email
+                    {copied && <span className="copied-tooltip">Copied!</span>}
+            </button>
+
           </div>
 
         <p>
@@ -88,12 +106,11 @@ const Intro: React.FC = () => {
         control and learning.
         </p>
 
-        
-
         <div className="collab-note">
          <strong>Currently open to opportunities and collaborations</strong> in research or applied projects at the intersection of AI, robotics, computer vision, graphics, and real-world system design.
         </div>
-                <h3>Key Interests</h3>
+        
+        <h3>Key Interests</h3>
           <div className="interests-tags">
             {interests.map((item, idx) => (
               <motion.div

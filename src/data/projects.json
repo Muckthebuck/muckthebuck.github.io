@@ -1,50 +1,47 @@
 [
   {
-    "id": "p1",
-    "title": "Graph Portfolio",
-    "description": "Visual portfolio using interactive tags and bubbles.",
-    "fullDescription": "Graph Portfolio is a dynamic, interactive interface built using React and D3. It visualizes projects as bubbles categorized by tags, allowing users to filter and explore visually.",
-    "tags": ["React", "D3", "Visualization"],
-    "link": "https://github.com/yourname/graph-portfolio",
-    "githubLink": "https://github.com/yourname/graph-portfolio",
-    "bannerImage": "/images/graph-portfolio-banner.jpg"
+    "id": "Robust_Adaptive_MPC",
+    "title": "Robust Adaptive MPC",
+    "description": "Adaptive Model Predictive Control with statistical guarantees in noisy settings.",
+    "fullDescription": "Implements an adaptive MPC controller using MATLAB/Python with noise‑robust performance for autonomous systems.",
+    "tags": ["MPC", "Adaptive-Control", "Control", "MATLAB", "Deep Learning"],
+    "link": "https://github.com/Muckthebuck/Robust_Adaptive_MPC",
+    "githubLink": "https://github.com/Muckthebuck/Robust_Adaptive_MPC"
   },
   {
-    "id": "p2",
-    "title": "Personal Blog",
-    "description": "A blog to share my thoughts and experiences.",
-    "fullDescription": "Built with React and TypeScript, this blog supports markdown content, dark mode, and a clean writing-focused layout.",
-    "tags": ["React", "TypeScript", "Blog"],
-    "link": "https://github.com/yourname/personal-blog"
+    "id": "Sokoban-Solver-in-C",
+    "title": "Sokoban Solver in C",
+    "description": "A Sokoban puzzle solver implementing freeze‑deadlock detection in C.",
+    "fullDescription": "C implementation of Sokoban solver using heuristic search and freeze‑deadlock detection to solve levels efficiently.",
+    "tags": ["DFS", "Deadlock", "C"],
+    "link": "https://github.com/Muckthebuck/Sokoban-Solver-in-C",
+    "githubLink": "https://github.com/Muckthebuck/Sokoban-Solver-in-C"
   },
   {
-    "id": "p3",
-    "title": "E-commerce Store",
-    "description": "An online store built with React and Redux.",
-    "fullDescription": "A responsive e-commerce platform featuring a product catalog, cart functionality, and checkout flow. Integrated with Stripe for payment.",
-    "tags": [ "Redux", "E-commerce"],
-    "link": "https://github.com/yourname/ecommerce-store",
-    "githubLink": "https://github.com/yourname/ecommerce-store",
-    "paperLink": "https://arxiv.org/abs/9999.99999"
+    "id": "AI_PA",
+    "title": "AI_PA (Game Search Agent)",
+    "description": "A* search algorithm implementation for game agents.",
+    "fullDescription": "An AI project implementing search algorithms for game agents with heuristic optimizations.",
+    "tags": ["Python", "A*"],
+    "link": "https://github.com/Muckthebuck/AI_PA",
+    "githubLink": "https://github.com/Muckthebuck/AI_PA"
   },
   {
-    "id": "p4",
-    "title": "Weather App",
-    "description": "A weather application that fetches data from a weather API.",
-    "fullDescription": "Simple weather app that pulls data from OpenWeather API. Features temperature toggling and search history saved in localStorage.",
-    "tags": ["React", "API", "Weather"],
-    "link": "https://github.com/yourname/weather-app",
-    "bannerImage": "/images/weather-app-banner.jpg"
+    "id": "ESI_Project",
+    "title": "Study Buddy",
+    "description": "Arduino-based time management device using Pomodoro techniques.",
+    "fullDescription": "A modular Arduino system integrating timer, LED matrix, buzzer and sensors to create a smart study buddy.",
+    "tags": ["Arduino", "Embedded", "Hardware", "C++", "CAD"],
+    "link": "https://github.com/Muckthebuck/ESI_Project",
+    "githubLink": "https://github.com/Muckthebuck/ESI_Project"
   },
   {
-    "id": "p5",
-    "title": "Portfolio Website",
-    "description": "My personal portfolio showcasing my projects and skills.",
-    "fullDescription": "A sleek developer portfolio with sections for projects, resume, and contact. Responsive, accessible, and deployed via GitHub Pages.",
-    "tags": ["React", "Portfolio", "Web Development"],
-    "link": "https://github.com/yourname/portfolio-website",
-    "githubLink": "https://github.com/yourname/portfolio-website",
-    "paperLink": "https://arxiv.org/abs/1234.56789",
-    "bannerImage": "/images/portfolio-website-banner.jpg"
+    "id": "PointNet",
+    "title": "PointNet Implementation",
+    "description": "Reimplementation of the PointNet architecture for point cloud classification.",
+    "fullDescription": "Clean from‑scratch implementation of PointNet with Python and PyTorch, maintaining permutation invariance and max‑pooling.",
+    "tags": ["Python", "Deep Learning", "Point Cloud", "Pytorch", "Classification", "Segmentation", "3D Deep Learning"],
+    "link": "https://github.com/Muckthebuck/PointNet",
+    "githubLink": "https://github.com/Muckthebuck/PointNet"
   }
 ]

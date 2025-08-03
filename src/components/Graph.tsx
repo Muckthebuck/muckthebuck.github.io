@@ -4,20 +4,48 @@ import { generateGraphData, GraphNode, GraphLink} from '../utils/graphUtils';
 import { Project } from '../types/Project';
 
 const DEFAULT_WIDTH = 800;
-const DEFAULT_HEIGHT = 500;
-const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+const DEFAULT_HEIGHT = 800;
 interface GraphProps {
   projects: Project[];
   selectedTag: string | null;
   onTagClick: (tag: string) => void;
   tagColorScale: d3.ScaleOrdinal<string, string>;
+  showLanguages: boolean;
+  minDegreeFilter: number; // Optional filter for minimum degree 
 }
-const Graph: React.FC<GraphProps> = ({ projects, selectedTag, onTagClick, tagColorScale }) => {
+const Graph: React.FC<GraphProps> = ({ projects, selectedTag, onTagClick, tagColorScale, showLanguages, minDegreeFilter }) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   useEffect(() => {
     const svg = d3.select(svgRef.current);
     const graphData = generateGraphData(projects);
+    // Language tag list (lowercase)
+    const languageTags = new Set([
+      'javascript', 'typescript', 'python', 'c', 'c++', 'rust', 'go', 'java',
+      'c#', 'html', 'css', 'shell', 'kotlin', 'swift', 'php', 'ruby', 'matlab'
+    ]);
+
+    if (!showLanguages) {
+      graphData.nodes = graphData.nodes.filter(n => !languageTags.has(n.tag.toLowerCase()));
+      
+      const nodeIds = new Set(graphData.nodes.map(n => n.id));
+
+      graphData.links = graphData.links.filter(link => {
+        const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
+        const targetId = typeof link.target === 'object' ? link.target.id : link.target;
+        return nodeIds.has(sourceId) && nodeIds.has(targetId);
+      });
+    }
+    // Filter nodes by minDegreeFilter
+    graphData.nodes = graphData.nodes.filter(n => (n.degree ?? 0) >= minDegreeFilter);
+
+    const validNodeIds = new Set(graphData.nodes.map(n => n.id));
+    graphData.links = graphData.links.filter(link => {
+      const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
+      const targetId = typeof link.target === 'object' ? link.target.id : link.target;
+      return validNodeIds.has(sourceId) && validNodeIds.has(targetId);
+    });
+
     const degrees = graphData.nodes.map(n => n.degree ?? 0);
     const minDegree = Math.min(...degrees);
     const maxDegree = Math.max(...degrees);
@@ -30,7 +58,7 @@ const Graph: React.FC<GraphProps> = ({ projects, selectedTag, onTagClick, tagCol
     svg.selectAll('*').remove();
 
     // Set up initial SVG size
-    svg.attr('width', '100%').attr('height', 'min(60vw, 500px)');
+    svg.attr('width', '100%').attr('height', 'min(60vw, 800px)');
 
     // Find neighbors for highlighting
     const neighborSet = new Set<string>();
@@ -52,7 +80,7 @@ const Graph: React.FC<GraphProps> = ({ projects, selectedTag, onTagClick, tagCol
           .id((d: GraphNode) => d.id)
           .distance(180)
       )
-      .force('charge', d3.forceManyBody().strength(-350))
+      .force('charge', d3.forceManyBody().strength(-130))
       .force('center', d3.forceCenter(DEFAULT_WIDTH / 2, DEFAULT_HEIGHT / 2));
 
     const link = svg
@@ -152,19 +180,21 @@ const Graph: React.FC<GraphProps> = ({ projects, selectedTag, onTagClick, tagCol
     });
 
     (simulation.force('link') as d3.ForceLink<GraphNode, GraphLink>).links(graphData.links);
-  }, [projects, selectedTag, onTagClick]);
+  }, [projects, selectedTag, onTagClick, tagColorScale, showLanguages, minDegreeFilter]);
 
   return (
     <svg
       ref={svgRef}
+      viewBox="0 0 800 600" // This is important for responsive scaling
+      preserveAspectRatio="xMidYMid meet"
       style={{
         width: '100%',
-        height: 'min(60vw, 500px)',
-        minWidth: '350px',
-        minHeight: '350px',
+        height: 'auto',
+        aspectRatio: '4 / 3',
         maxWidth: '100%',
+        minHeight: '300px',
         display: 'block',
-        margin: '0 auto'
+        margin: '0 auto',
       }}
     />
   );
