@@ -4,7 +4,7 @@
     "title": "Robust Adaptive MPC",
     "description": "Adaptive Model Predictive Control with statistical guarantees in noisy settings.",
     "fullDescription": "Implements an adaptive MPC controller using MATLAB/Python with noise‑robust performance for autonomous systems.",
-    "tags": ["MPC", "Adaptive-Control", "Control", "MATLAB", "Deep Learning"],
+    "tags": ["MPC", "Adaptive-Control", "Control Systems", "MATLAB", "Deep Learning", "LSTM"],
     "link": "https://github.com/Muckthebuck/Robust_Adaptive_MPC",
     "githubLink": "https://github.com/Muckthebuck/Robust_Adaptive_MPC"
   },
@@ -13,7 +13,7 @@
     "title": "Sokoban Solver in C",
     "description": "A Sokoban puzzle solver implementing freeze‑deadlock detection in C.",
     "fullDescription": "C implementation of Sokoban solver using heuristic search and freeze‑deadlock detection to solve levels efficiently.",
-    "tags": ["DFS", "Deadlock", "C"],
+    "tags": ["DFS (Depth-First Search)", "Deadlock Detection", "C"],
     "link": "https://github.com/Muckthebuck/Sokoban-Solver-in-C",
     "githubLink": "https://github.com/Muckthebuck/Sokoban-Solver-in-C"
   },
@@ -22,7 +22,7 @@
     "title": "AI_PA (Game Search Agent)",
     "description": "A* search algorithm implementation for game agents.",
     "fullDescription": "The first part of an AI project implementing search algorithms for game agents with heuristic optimizations.",
-    "tags": ["Python", "A*"],
+    "tags": ["Python", "A* Search", "Search Algorithms"],
     "link": "https://github.com/Muckthebuck/AI_PA",
     "githubLink": "https://github.com/Muckthebuck/AI_PA"
   },
@@ -40,7 +40,7 @@
     "title": "PointNet Implementation",
     "description": "Reimplementation of the PointNet architecture for point cloud classification and segmentation.",
     "fullDescription": "Clean from‑scratch implementation of PointNet with Python and PyTorch, maintaining permutation invariance and max‑pooling.",
-    "tags": ["Python", "Deep Learning", "Point Cloud", "Pytorch", "Classification", "Segmentation", "3D Deep Learning"],
+    "tags": ["Python", "Deep Learning", "Point Cloud", "PyTorch", "Classification", "Segmentation", "3D Deep Learning", "PointNet"],
     "link": "https://github.com/Muckthebuck/PointNet",
     "githubLink": "https://github.com/Muckthebuck/PointNet"
   },
@@ -52,5 +52,208 @@
     "githubLink": "https://github.com/Muckthebuck/wasserstein_projection",
     "tags": ["Python","JAX", "ott-jax", "NumPy", "Matplotlib", "scikit-image", "Optimal Transport"],
     "bannerImage": "/images/morph.gif"
-  }
+  },
+  {
+    "id": "Portfolio",
+    "title": "Portfolio Website",
+    "description": "A modular React + TypeScript portfolio website that visualizes projects using a tag-based graph.",
+    "fullDescription": "This portfolio website is built with React and TypeScript, showcasing projects in a visually appealing manner using a tag-based graph for navigation.",
+    "tags": ["React", "TypeScript", "Portfolio", "Visualization", "Graph Algorithms"],
+    "link": "https://muckthebuck.github.io/",
+    "githubLink": "https://github.com/Muckthebuck/muckthebuck.github.io"
+  },
+  {
+    "id": "Capstone_Project",
+    "title": "Learning Dynamical Systems from a Finite Number of Closed-Loop Trajectories",
+    "description": "A research project on learning dynamical systems from closed-loop trajectories using deep learning.",
+    "fullDescription": "Model-based control strategies are widely used to regulate dynamical systems, ensuring trajectory tracking and stability. However, these approaches rely on accurate system models, which may not always be available due to unmodeled dynamics, parameter variations, or environmental uncertainties.\n\nThis project investigates the application of the Sign-Perturbed Sums (SPS) algorithm to estimate system dynamics using a finite number of closed-loop data points. The SPS method provides a set of system models with exact probabilistic guarantees that the true system lies within this set. By continuously updating this set in real time with new data, we aim to enhance the robustness and adaptability of control strategies, mitigating performance degradation caused by model uncertainty.\n\nWe developed a modular software architecture that integrates SPS seamlessly into real-time control loops. The architecture supports asynchronous operation, allowing the computationally intensive SPS process to run on a separate processor or device—ideal for distributed systems or embedded applications with limited resources. This design supports flexible deployment across various platforms and simplifies integration with existing controllers.\n\nBy combining real-time SPS-based model updates with robust control synthesis, this project enables adaptive, data-driven closed-loop control. Bayesian methods are employed to fuse SPS confidence regions, refining model estimates over time and improving both safety and performance in dynamic or uncertain environments.\n\nThis framework enhances the reliability of autonomous systems under changing conditions and offers a practical approach for deploying advanced system identification techniques in real-world control applications.\n\nTLDR\nWe estimate how a system behaves using limited data, even when there's noise or uncertainty. Our method gives a guaranteed range of possible models and updates it as more data comes in. This lets us design controllers that stay reliable and safe, even as conditions change.",
+    "tags": [
+      "System Identification",
+      "Dynamical Systems",
+      "Research",
+      "Python",
+      "Kernel Regression",
+      "ARMAX",
+      "JIT",
+      "Optimal Control",
+      "Bayesian Methods",
+      "Binary Search"
+    ],
+    "githubLink": "https://github.com/Muckthebuck/Learning-Dynamic-Systems",
+    "paperLink": "https://github.com/Muckthebuck/Learning-Dynamic-Systems/blob/main/E_21_WERI_009.pdf"
+  },
+  {
+    "id": "bl_localisation",
+    "title": "Alternative localisation methods using Bluetooth CTE",
+    "description": "Exploring alternative localisation methods using Bluetooth CTE and RSSI.",
+    "fullDescription": "This project investigates alternative localisation methods using Bluetooth CTE (Constant Tone Extension) and RSSI (Received Signal Strength Indicator). It explores how beamforming can be combined with CTE for precise positioning and tracking in various applications, leveraging the unique properties of Bluetooth signals to enhance localisation accuracy (within 10cm). The project was done for the University of Melbourne as a Research Assistant on request of an external client. The report and code are therefore not publicly available.",
+    "tags": ["Bluetooth", "CTE", "Localisation", "Positioning", "Tracking", "Beamforming", "Embedded", "Research", "Unscented Kalman Filter"]
+  },
+  {
+    "id": "NICEU",
+    "title": "NICEU: App to monitor stent based tracheostomy",
+    "description": "Android app to monitor a stent-based tracheostomy prototype to minimize neonatal airway damage.",
+    "fullDescription": "NICEU is an Android application designed to monitor a stent-based tracheostomy prototype, aiming to minimize airway damage in neonates. The app provides real-time data visualization and alerts for healthcare professionals, enhancing patient safety and care. It was developed as part of a hackathon organized by the University of Melbourne Biomedical Engineering Society (MUBES), where it secured 3rd place.",
+    "githubLink": "https://github.com/Muckthebuck/NICEU",
+    "tags": ["Android", "Tracheostomy", "Biomedical Engineering", "Hackathon"]
+  },
+{
+  "id": "Underwater_Stereo_Depth",
+  "title": "Self-Supervised Underwater Stereo Depth Estimation",
+  "description": "A transfer learning pipeline for stereo depth estimation in underwater scenes using self-supervised learning and synthetic labels.",
+  "fullDescription": "Acquiring high-quality training data for underwater depth estimation poses numerous challenges, including poor visibility, refraction, and the scarcity of labeled datasets. Moreover, due to the domain gap between in-air and underwater imagery, models trained in air cannot be directly applied to underwater scenarios.\n\nTo tackle this, we introduce a novel transfer learning-based pipeline to fine-tune stereo depth estimation models specifically for underwater environments. Our approach leverages self-supervised learning and generates pseudo-ground-truth stereo pairs using a fine-tuned underwater monocular depth model. By applying synthetic labels—an idea adapted from in-air methods—we convert monocular underwater datasets into usable stereo training data.\n\nThe framework integrates domain-specific enhancements such as underwater data augmentation and color correction to improve performance. To assess generalization, we conducted zero-shot evaluations on four publicly available datasets from FLSea, selecting 100 images from each. Our fine-tuned stereo model demonstrates significantly improved depth resolution and accuracy in these zero-shot tests.\n\nThis project provides a scalable method for underwater stereo depth estimation without requiring expensive data annotation and offers practical value for marine robotics, exploration, and perception tasks in underwater environments.",
+  "tags": [
+    "Stereo Depth Estimation",
+    "Underwater Vision",
+    "Transfer Learning",
+    "Self-Supervised Learning",
+    "Computer Vision",
+    "PyTorch",
+    "Marine Robotics",
+    "3D Perception",
+    "Deep Learning",
+    "Image Processing",
+    "Transformer",
+    "Vision Transformer",
+    "Research"
+  ],
+  "githubLink": "https://github.com/Muckthebuck/Self-Supervised-Underwater-Stereo-Depth-Estimation",
+  "paperLink": "https://github.com/Muckthebuck/Self-Supervised-Underwater-Stereo-Depth-Estimation/blob/main/11261_physics_informed_knowledge_tra.pdf",
+  "bannerImage": "/images/underwater_stereo_depth.png"
+},
+{
+  "id": "SONiC_msft",
+  "title": "SONiC (Microsoft Internship)",
+  "description": "Contributed to the SONiC project, an open-source network OS for data center switches, by implementing support for the RADIAN feature on T2 hardware.",
+  "fullDescription": "During my internship at Microsoft, I contributed to the SONiC (Software for Open Networking in the Cloud) project—an open-source network operating system used in large-scale data center switches. My primary task was to implement support for the RADIAN feature for SONiC on T2 hardware platforms.\n\n\nSpecifically, I added CLI command functionality to manage the `ANCHOR` prefix within the `PREFIX_LIST` table in the `CONFIG_DB`, including support to add and remove anchor prefixes. I designed and implemented YANG model extensions to support the new configuration schema and created the `PrefixListMgr` component to handle real-time configuration changes.\n\nI also introduced two reusable templates (`add_radian` and `del_radian`) to automate the creation and deletion of anchor prefix lists and aggregate addresses.\n\n**Work item tracked:** Microsoft ADO #30112967\n\n**Verification:**\n- Unit tests covering config generation, manager behavior, and YANG model validation\n\nThis contribution improved the flexibility of routing configuration in SONiC and the introduction of `ANCHOR_PREFIX` allowed for faster convergence of routes under multi-fiber cut scenarios.",
+  "tags": [
+    "Networking",
+    "SONiC",
+    "Microsoft",
+    "Open Source",
+    "YANG",
+    "Redis",
+    "Python",
+    "Data Center",
+    "Internship"
+  ],
+  "githubLink": "https://github.com/sonic-net/sonic-buildimage/pull/21732",
+  "bannerImage": "/images/SONiC_network_operating_system_logo.jpg"
+},
+{
+  "id": "NoiseResolution-HighDimData",
+  "title": "Investigation of Methods for Resolving Statistical Noise and Understanding Correlation Structure in High-Dimensional Data",
+  "description": "This project investigates methods for resolving statistical noise and understanding correlation structures in high-dimensional data, with a focus on financial stock return data.",
+  "fullDescription": "This project, conducted as part of the ELEN90094 – Large Data Methods & Applications course at The University of Melbourne, investigates methods for resolving statistical noise and understanding correlation structures in high-dimensional data, with a focus on financial stock return data. The analysis is divided into two stages:\n\n1. **Stage 1**: An in-depth study of data analysis methods for identifying true correlation information in complex, high-dimensional datasets. The study involves reviewing and critiquing approaches presented in the research paper by V. Plerou et al. (Physical Review E, 2002), specifically methods for investigating correlation patterns in financial data.\n\n2. **Stage 2**: Application of the methods studied in Stage 1, along with additional methods covered in the course, to real-world financial stock return datasets from periods before and after the emergence of COVID-19. The analysis aims to distinguish true correlations from noise, quantify statistical noise, and reveal structured correlation patterns.\n\nThe project will produce a comprehensive report and code that documents the methods, experiments, and results. The results will provide insights into the dependencies and correlation structures in financial data, and the project will explore the stability and properties of estimated correlation matrices.",
+  "tags": [
+    "High-Dimensional Data",
+    "Statistical Noise",
+    "Correlation Structure",
+    "Financial Analysis",
+    "Python",
+    "Data Analysis",
+    "Research"
+  ],
+  "githubLink": "https://github.com/Muckthebuck/NoiseResolution-HighDimData/blob/main/README.md",
+  "paperLink": "https://github.com/Muckthebuck/NoiseResolution-HighDimData/blob/main/Final%20report_GroupA.pdf"
+},
+{
+  "id": "catkin_ws",
+  "title": "ROS2 Catkin Workspace",
+  "description": "A ROS2 Catkin workspace for running SOTA SLAM algorithms using `gazebo`, `rviz2` and `Carla Simulator`.",
+  "fullDescription": "This project provides a ROS2 Catkin workspace for running state-of-the-art SLAM (Simultaneous Localization and Mapping) algorithms using `gazebo`, `rviz2`, and the `Carla Simulator`.",
+  "tags": [
+    "ROS2",
+    "CATKIN Workspace",
+    "SLAM",
+    "Gazebo",
+    "Rviz2",
+    "Carla Simulator",
+    "Robotics",
+    "Python",
+    "C++",
+    "Linux"
+  ],
+  "githubLink": "https://github.com/Muckthebuck/catkin_ws"
+},
+{
+  "id": "Mobile_Robotics",
+  "title": "Autonomous Navigation and Perception in Mobile Robotics (CARLA + ROS)",
+  "description": "A full-stack mobile robotics project using CARLA and ROS with A* global path planning and local control via Frenet Planner and MPC.",
+  "fullDescription": "This project focuses on autonomous navigation and perception in mobile robotics using the CARLA simulator and the Robot Operating System (ROS). The system implements a complete navigation pipeline for autonomous vehicles, integrating global and local planning, sensor perception, and control modules.\n\n- **Global Path Planning**: Utilizes the A* algorithm to compute an optimal path from a start point to a goal position within the mapped environment.\n- **Local Path Planning**: Implements a Frenet coordinate-based planner to generate feasible local trajectories around dynamic obstacles and road curvature.\n- **Control**: A Model Predictive Controller (MPC) is used for fine-grained trajectory following, ensuring smooth, stable, and constrained motion.\n\nCARLA is used to simulate realistic urban driving scenarios, while ROS nodes handle sensor fusion, decision-making, and planning pipelines. The system enables testing and development of real-time autonomous navigation strategies under realistic conditions.\n\nThis project demonstrates integration of classical planning and control techniques in a modular robotics software stack for autonomous driving applications.",
+  "tags": [
+    "Mobile Robotics",
+    "Autonomous Navigation",
+    "Path Planning",
+    "Carla Simulator",
+    "ROS",
+    "A* Search",
+    "Frenet Planner",
+    "MPC",
+    "Control Systems"
+  ],
+  "githubLink": "https://github.com/Muckthebuck/Mobile_Robotics"
+},
+{
+  "id": "2023-Energy-kit",
+  "title": "DNN-LSTM with Hybrid MPC for Home Energy Management System (HEMS)",
+  "description": "Integrated predictive control system for energy cost minimization using DNN-LSTM and Hybrid MPC in home energy environments.",
+  "fullDescription": "# DNN-LSTM with Hybrid MPC for Home Energy Management System (HEMS)\n\nThis project implements a predictive control framework for optimizing energy use in residential settings. A hybrid system combining Deep Neural Networks (DNN), Long Short-Term Memory (LSTM) models, and Model Predictive Control (MPC) is used to manage battery storage, solar curtailment, and heat pump operations in the presence of variable electricity pricing and weather conditions.\n\n### 🔍 Project Goals\n- Minimize electricity costs in residential homes\n- Maintain stable indoor temperatures\n- Predict solar insolation and temperature for better control decisions\n- Evaluate different pricing scenarios (unidirectional, bidirectional, with penalties)\n\n### ⚙️ Key Components\n- **DNN-LSTM models** for forecasting temperature, load, and solar generation\n- **Hybrid MPC controller** for real-time optimization of control variables\n- **Scenario analysis** across pricing schemes and prediction reliability\n- **Sliding window batches** and online model training pipeline\n\n### 📊 Features\n- Comparative analysis of prediction-aware vs. null prediction cases\n- Real-world weather and load datasets (e.g., BOM, Austin)\n- Structured Jupyter notebooks and Python classes for modularity\n\nThis project was conducted between Mar 2023 – Jul 2023 as part of a smart grid research initiative.",
+  "tags": [
+    "HEMS",
+    "MPC", 
+    "Hybrid MPC",
+    "DNN",
+    "LSTM",
+    "Energy Optimization",
+    "Smart Grid",
+    "Battery Storage",
+    "Heat Pump Control",
+    "Python",
+    "Time Series Forecasting",
+    "Research"
+  ],
+  "githubLink": "https://github.com/Muckthebuck/2023-Energy-kit"
+},
+{
+  "id": "AI_PB-AI-game-agent",
+  "title": "CACHEX AI Agent – Adversarial Search for Game Strategy",
+  "description": "An advanced AI agent for CACHEX (a HEX-like connection game) built using adversarial search techniques, including Minimax with Alpha-Beta pruning and heuristic path planning.",
+  "fullDescription": "# CACHEX AI Agent – Adversarial Search for Game Strategy\n\nThis project implements a competitive AI agent for CACHEX, a modified version of the HEX board game. The agent leverages adversarial search algorithms and adaptive heuristics to play optimally across various board sizes and game states.\n\n### 🎯 Key Features\n- **Minimax Algorithm** with Alpha-Beta pruning for efficient state evaluation\n- **Forward Pruning** to reduce unnecessary branching and improve depth\n- **Heuristic Evaluation Functions** balancing path completion, blocking, and connection density\n- **Weighted A*** for optimal path estimation in dynamic environments\n- **Adaptive Depth Strategy**: dynamically adjusts Minimax depth based on board size and game stage\n- Supports capture mechanics and aggressive vs. defensive strategy balancing\n\n### 🧠 Performance Highlights\n- Achieved a **98%+ win rate** over 500+ simulated games across board sizes 3×3, 5×5, 7×7, and 8×8\n- Capable of real-time decision-making with tight time limits\n\nThis project demonstrates the effectiveness of hybrid search and planning techniques in adversarial board games.",
+  "tags": [
+    "Game AI",
+    "Adversarial Search",
+    "Minimax Pruning",
+    "Alpha-Beta Pruning",
+    "Heuristics",
+    "A* Search",
+    "AI Agent",
+    "Python",
+    "Graph Algorithms",
+    "Artificial Intelligence",
+    "Search Algorithms"
+  ],
+  "githubLink": "https://github.com/Muckthebuck/AI_PB-AI-game-agent",
+  "paperLink": "https://github.com/Muckthebuck/AI_PB-AI-game-agent/blob/main/COMP30024_PROJECT_PARTB_REPORT.pdf",
+  "bannerImage": "/images/triplets.png"
+},
+{
+  "id": "Cerce",
+  "title": "MBSI CereCe Project (prev. Cerebruh)",
+  "description": "Project CereCe aims to empower self-directed mobility for tetraplegic individuals by leveraging gaze-tracking and brain-computer interface (BCI) technology.",
+  "fullDescription": "In this project I worked as the integeration tieam lead, communicating with BCI teams and computer vision team to integreate the BCI and gaze-tracking systems into a single system that can be used by tetraplegic individuals to control a wheelchair.\n\nThe project is currently in the research phase, with the goal of developing a prototype that can be tested with real users. The project is being conducted in collaboration with the mentors from University of Melbourne and sponsored by MentaLab.\n\n During my role, I was responsible for:\n - Integrating the BCI and gaze-tracking systems into a single system\n- Developing the software architecture for the system\n- Conducting background research and developing miniature prototype.\n- Coordinating with the BCI and computer vision teams to ensure that the system is working as intended\n- Educating the complete team with industry standard practices to ensure good development environment. I also helped setup organisation github and help internal workshops on object oriented programming and dev tools like vs-code and Github.\n\nThe project is still in its early stages, but I am confident that it has the potential to make a significant impact on the lives of tetraplegic individuals.",
+  "tags": [
+    "Brain Computer Interface (BCI)",
+    "Gaze Tracking",
+    "Computer Vision",
+    "Assistive Technology",
+    "Robotics",
+    "Python",
+    "Research",
+    "Integration"
+  ],
+  "link": "https://www.instagram.com/mbsi_projectcerece/"
+}
+
+
 ]

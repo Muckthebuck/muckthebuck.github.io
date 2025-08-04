@@ -5,6 +5,7 @@ import { FaGithub } from 'react-icons/fa';
 import { PiNewspaperClippingLight } from 'react-icons/pi';
 import { IoIosLink } from "react-icons/io";
 import './ProjectPanel.css';
+import ReactMarkdown from 'react-markdown';
 
 interface ProjectPanelProps {
   projects: Project[];
@@ -79,63 +80,69 @@ const ProjectPanel: React.FC<ProjectPanelProps> = ({ projects, tagColorScale }) 
         </div>
       )}
 
-      {selectedProject && (
-        <div
-          className="modal-overlay"
-          onClick={() => setSelectedProject(null)}
-          role="dialog"
-          aria-modal="true"
-          tabIndex={-1}
-        >
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            {selectedProject.bannerImage ? (
-              <img
-                src={selectedProject.bannerImage}
-                alt={`${selectedProject.title} banner`}
-                className="modal-banner-image"
-              />
-            ) : (
-              <div className="modal-banner-placeholder" />
-            )}
-            <h2>{selectedProject.title}</h2>
-            <div className="project-tags" style={{ marginBottom: '1rem' }}>
-              {selectedProject.tags.map(tag => (
-                <span
-                  className="project-tag"
-                  key={tag}
-                  style={{ background: tagColorScale(tag) }}
-                >
-                  {tag}
-                </span>
-              ))}
+      {selectedProject && (() => {
+        const isLongDescription = selectedProject.fullDescription.length > 500;
+
+        return (
+          <div
+            className="modal-overlay"
+            onClick={() => setSelectedProject(null)}
+            role="dialog"
+            aria-modal="true"
+            tabIndex={-1}
+          >
+            <div
+              className={`modal-content${isLongDescription ? '-long' : ''}`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {selectedProject.bannerImage ? (
+                <img
+                  src={selectedProject.bannerImage}
+                  alt={`${selectedProject.title} banner`}
+                  className="modal-banner-image"
+                />
+              ) : (
+                <div className="modal-banner-placeholder" />
+              )}
+              <h2>{selectedProject.title}</h2>
+              <div className="project-tags" style={{ marginBottom: '1rem' }}>
+                {selectedProject.tags.map(tag => (
+                  <span
+                    className="project-tag"
+                    key={tag}
+                    style={{ background: tagColorScale(tag) }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="modal-links">
+                {selectedProject.link && (
+                  <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className='modal-link-button'>
+                    <LinkIcon style={{ fontSize: '1.4rem' }} />
+                    <span>Link</span>
+                  </a>
+                )}
+                {selectedProject.githubLink && (
+                  <a href={selectedProject.githubLink} target="_blank" rel="noopener noreferrer" className='modal-link-button'>
+                    <GitHubIcon style={{ fontSize: '1.4rem' }} />
+                    <span>GitHub</span>
+                  </a>
+                )}
+                {selectedProject.paperLink && (
+                  <a href={selectedProject.paperLink} target="_blank" rel="noopener noreferrer" className='modal-link-button'>
+                    <PaperIcon style={{ fontSize: '1.4rem' }} />
+                    <span>Paper</span>
+                  </a>
+                )}
+              </div>
+              <ReactMarkdown>{selectedProject.fullDescription}</ReactMarkdown>
             </div>
-            <div className="modal-links">
-              {selectedProject.link && (
-                <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className='modal-link-button'>
-                  <LinkIcon style={{ fontSize: '1.4rem' }} />
-                  <span>Link</span>
-                </a>
-              )}
-              {selectedProject.githubLink && (
-                <a href={selectedProject.githubLink} target="_blank" rel="noopener noreferrer" className='modal-link-button'>
-                  <GitHubIcon style={{ fontSize: '1.4rem' }} />
-                  <span>GitHub</span>
-                </a>
-              )}
-              {selectedProject.paperLink && (
-                <a href={selectedProject.paperLink} target="_blank" rel="noopener noreferrer" className='modal-link-button'>
-                  <PaperIcon style={{ fontSize: '1.4rem' }} />
-                  <span>Paper</span>
-                </a>
-              )}
-            </div>
-            <p>{selectedProject.fullDescription}</p>
           </div>
-        </div>
-      )}
+        );
+      })()}
     </>
   );
 };
-
 
 export default ProjectPanel;

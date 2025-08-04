@@ -1,202 +1,403 @@
-import React, { useEffect, useRef } from 'react';
-import * as d3 from 'd3';
-import { generateGraphData, GraphNode, GraphLink} from '../utils/graphUtils';
+import React, { useMemo, useRef, useEffect, useState } from 'react';
+import ForceGraph2D from 'react-force-graph-2d';
+import * as d3 from 'd3-force';
 import { Project } from '../types/Project';
+import { hierarchy, type TagNode } from '../utils/tagHierarchy';
 
-const DEFAULT_WIDTH = 800;
-const DEFAULT_HEIGHT = 800;
+interface Node {
+  id: string;
+  val: number; // size of node
+  color: string;
+  x?: number;
+  y?: number;
+}
+
+interface Link {
+  source: string;
+  target: string;
+  dashed?: boolean;
+}
+
 interface GraphProps {
   projects: Project[];
   selectedTag: string | null;
-  onTagClick: (tag: string) => void;
-  tagColorScale: d3.ScaleOrdinal<string, string>;
+  onTagClick: (tag: string | null) => void;
+  tagColorScale: (tag: string) => string;
   showLanguages: boolean;
-  minDegreeFilter: number; // Optional filter for minimum degree 
+  maxHierarchyLevel: number;
+  onReset: () => void;
 }
-const Graph: React.FC<GraphProps> = ({ projects, selectedTag, onTagClick, tagColorScale, showLanguages, minDegreeFilter }) => {
-  const svgRef = useRef<SVGSVGElement | null>(null);
 
-  useEffect(() => {
-    const svg = d3.select(svgRef.current);
-    const graphData = generateGraphData(projects);
-    // Language tag list (lowercase)
-    const languageTags = new Set([
-      'javascript', 'typescript', 'python', 'c', 'c++', 'rust', 'go', 'java',
-      'c#', 'html', 'css', 'shell', 'kotlin', 'swift', 'php', 'ruby', 'matlab'
-    ]);
 
-    if (!showLanguages) {
-      graphData.nodes = graphData.nodes.filter(n => !languageTags.has(n.tag.toLowerCase()));
-      
-      const nodeIds = new Set(graphData.nodes.map(n => n.id));
-
-      graphData.links = graphData.links.filter(link => {
-        const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
-        const targetId = typeof link.target === 'object' ? link.target.id : link.target;
-        return nodeIds.has(sourceId) && nodeIds.has(targetId);
-      });
-    }
-    // Filter nodes by minDegreeFilter
-    graphData.nodes = graphData.nodes.filter(n => (n.degree ?? 0) >= minDegreeFilter);
-
-    const validNodeIds = new Set(graphData.nodes.map(n => n.id));
-    graphData.links = graphData.links.filter(link => {
-      const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
-      const targetId = typeof link.target === 'object' ? link.target.id : link.target;
-      return validNodeIds.has(sourceId) && validNodeIds.has(targetId);
+function buildParentMap(hierarchy: TagNode): Map<string, string | null> {
+  const parentMap = new Map<string, string | null>();
+  function dfs(node: TagNode, parent: string | null) {
+    Object.entries(node).forEach(([tag, children]) => {
+      parentMap.set(tag, parent);
+      dfs(children, tag);
     });
+  }
+  dfs(hierarchy, null);
+  return parentMap;
+}
 
-    const degrees = graphData.nodes.map(n => n.degree ?? 0);
-    const minDegree = Math.min(...degrees);
-    const maxDegree = Math.max(...degrees);
-    // Node size scale: maps degree to radius between 10 and 32
-    const radiusScale = d3.scaleLinear()
-      .domain([minDegree, maxDegree])
-      .range([10, 32]);
+function buildTagSet(hierarchy: TagNode): Set<string> {
+  const set = new Set<string>();
+  function dfs(node: TagNode) {
+    Object.entries(node).forEach(([tag, children]) => {
+      set.add(tag);
+      dfs(children);
+    });
+  }
+  dfs(hierarchy);
+  return set;
+}
 
-
-    svg.selectAll('*').remove();
-
-    // Set up initial SVG size
-    svg.attr('width', '100%').attr('height', 'min(60vw, 800px)');
-
-    // Find neighbors for highlighting
-    const neighborSet = new Set<string>();
-    if (selectedTag) {
-      neighborSet.add(selectedTag);
-      graphData.links.forEach(link => {
-        if (link.source === selectedTag) neighborSet.add(link.target as string);
-        if (link.target === selectedTag) neighborSet.add(link.source as string);
-      });
+function hasChildren(tag: string, hierarchy: TagNode): boolean {
+  function dfs(node: TagNode): boolean {
+    if (tag in node) {
+      return Object.keys(node[tag]).length > 0;
     }
+    for (const child of Object.values(node)) {
+      if (dfs(child)) return true;
+    }
+    return false;
+  }
+  return dfs(hierarchy);
+}
 
-    // D3 simulation
-    const simulation = d3
-      .forceSimulation<GraphNode>(graphData.nodes)
-      .force(
-        'link',
-        d3
-          .forceLink<GraphNode, GraphLink>(graphData.links)
-          .id((d: GraphNode) => d.id)
-          .distance(180)
-      )
-      .force('charge', d3.forceManyBody().strength(-130))
-      .force('center', d3.forceCenter(DEFAULT_WIDTH / 2, DEFAULT_HEIGHT / 2));
+function getLevel(tag: string, parentMap: Map<string, string | null>): number {
+  let level = 0;
+  let current = tag;
+  while (parentMap.get(current)) {
+    current = parentMap.get(current)!;
+    level++;
+  }
+  return level;
+}
 
-    const link = svg
-      .append('g')
-      .selectAll('line')
-      .data(graphData.links)
-      .enter()
-      .append('line')
-      .attr('stroke', '#999')
-      .attr('stroke-opacity', (d: GraphLink) =>
-        selectedTag && !(neighborSet.has(d.source as string) && neighborSet.has(d.target as string))
-          ? 0.1
-          : 0.6
+function collapseTag(
+  tag: string,
+  parentMap: Map<string, string | null>,
+  maxLevel: number,
+  hierarchy: TagNode,
+  tagSet: Set<string>
+): string {
+  if (!tagSet.has(tag)) {
+    return tag;
+  }
+  let current = tag;
+  let level = getLevel(tag, parentMap);
+  while (
+    (level > maxLevel) ||
+    (level >= maxLevel && !hasChildren(current, hierarchy))
+  ) {
+    if (!parentMap.get(current)) break;
+    current = parentMap.get(current)!;
+    level--;
+  }
+  return current;
+}
+
+function getChildren(tag: string, hierarchy: TagNode): string[] {
+  let children: string[] = [];
+  function dfs(node: TagNode) {
+    if (tag in node) {
+      children = Object.keys(node[tag]);
+      return true;
+    }
+    for (const childNode of Object.values(node)) {
+      if (dfs(childNode)) return true;
+    }
+    return false;
+  }
+  dfs(hierarchy);
+  return children;
+}
+
+const Graph: React.FC<GraphProps> = ({
+  projects,
+  selectedTag,
+  onTagClick,
+  tagColorScale,
+  showLanguages,
+  maxHierarchyLevel,
+  onReset
+}) => {
+  const graphRef = useRef<any>(null);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!graphRef.current) return;
+      var padding = 200; // default padding
+      if (containerRef.current) {
+        padding = Math.min(containerRef.current.clientWidth, containerRef.current.clientHeight) * 0.3;
+      }
+      const timeout = setTimeout(() => {
+      graphRef.current.zoomToFit(400, padding); // duration ms, padding px
+    }, 100);
+
+    return () => clearTimeout(timeout);
+  }, []); // empty dependency: only runs once on mount
+
+
+  const [expandedNodes, setExpandedNodes] = useState<Set<string>>(new Set());
+
+  const languageTags = useMemo(
+    () =>
+      new Set([
+        'javascript',
+        'typescript',
+        'python',
+        'c',
+        'c++',
+        'rust',
+        'go',
+        'java',
+        'c#',
+        'html',
+        'css',
+        'shell',
+        'kotlin',
+        'swift',
+        'php',
+        'ruby',
+        'matlab',
+      ]),
+    []
+  );
+
+  const parentMap = useMemo(() => buildParentMap(hierarchy), []);
+  const tagSet = useMemo(() => buildTagSet(hierarchy), []);
+
+  // Build nodes and links, filtering nodes that do not appear in projects
+  const { nodes, links } = useMemo(() => {
+    const tagCount = new Map<string, number>();
+
+    projects.forEach(project => {
+      const filteredTags = showLanguages
+        ? project.tags
+        : project.tags.filter(t => !languageTags.has(t.toLowerCase()));
+
+      const collapsedTags = filteredTags.map(t =>
+        collapseTag(t, parentMap, maxHierarchyLevel, hierarchy, tagSet)
       );
 
-    const node = svg
-      .append('g')
-      .selectAll('circle')
-      .data(graphData.nodes)
-      .enter()
-      .append('circle')
-      .attr('r', (d: GraphNode) => {
-          if (selectedTag) {
-            return neighborSet.has(d.id)
-              ? radiusScale(d.degree ?? 0)
-              : 8; // Small for non-neighbors
+      let finalTags: string[] = [];
+
+      collapsedTags.forEach(tag => {
+        if (expandedNodes.has(tag)) {
+          const children = getChildren(tag, hierarchy);
+          if (children.length > 0) {
+            finalTags.push(...children);
+          } else {
+            finalTags.push(tag);
           }
-          return radiusScale(d.degree ?? 0);
-        })
-      .attr('fill', (d: GraphNode) =>
-        selectedTag
-          ? neighborSet.has(d.id)
-            ? tagColorScale(d.tag)
-            : '#bbb'
-          : tagColorScale(d.tag)
-      )
-      .attr('stroke', '#fff')
-      .attr('stroke-width', 1.5)
-      .style('opacity', (d: GraphNode) =>
-        selectedTag
-          ? neighborSet.has(d.id)
-            ? 1
-            : 0.3
-          : 1
-      )
-      .on('click', (_event: MouseEvent, d: GraphNode) => onTagClick(d.tag));
+        } else {
+          finalTags.push(tag);
+        }
+      });
 
-    // Add labels
-    const label = svg
-      .append('g')
-      .selectAll('text')
-      .data(graphData.nodes)
-      .enter()
-      .append('text')
-      .text((d: GraphNode) => d.tag)
-      .attr('font-size', '12px')
-      .attr('text-anchor', 'middle')
-      .attr('pointer-events', 'none')
-      .attr('fill', '#333');
-
-    // Dynamically fit content after simulation ends
-    simulation.on('end', () => {
-      // Compute bounding box of all nodes
-      const xs = graphData.nodes.map(n => n.x ?? 0);
-      const ys = graphData.nodes.map(n => n.y ?? 0);
-      const minX = Math.min(...xs);
-      const maxX = Math.max(...xs);
-      const minY = Math.min(...ys);
-      const maxY = Math.max(...ys);
-
-      // Add padding
-      const padding = 40;
-      const viewBox = [
-        minX - padding,
-        minY - padding,
-        maxX - minX + 2 * padding,
-        maxY - minY + 2 * padding
-      ].join(' ');
-
-      svg.attr('viewBox', viewBox);
+      // Unique final tags only
+      Array.from(new Set(finalTags)).forEach(tag => {
+        tagCount.set(tag, (tagCount.get(tag) || 0) + 1);
+      });
     });
 
-    simulation.on('tick', () => {
-      link
-        .attr('x1', (d: GraphLink) => (typeof d.source === 'object' ? d.source.x : 0)!)
-        .attr('y1', (d: GraphLink) => (typeof d.source === 'object' ? d.source.y : 0)!)
-        .attr('x2', (d: GraphLink) => (typeof d.target === 'object' ? d.target.x : 0)!)
-        .attr('y2', (d: GraphLink) => (typeof d.target === 'object' ? d.target.y : 0)!);
+    // Only include nodes that have a count (i.e., appear in projects)
+    const nodes: Node[] = Array.from(tagCount.entries()).map(([tag, count]) => ({
+      id: tag,
+      val: count,
+      color: tagColorScale(tag) || '#888',
+    }));
 
-      node
-        .attr('cx', (d: GraphNode) => d.x!)
-        .attr('cy', (d: GraphNode) => d.y!);
+    // Build links based on co-occurrence of tags per project
+    const linkMap = new Map<string, Link>();
 
-      label
-        .attr('x', (d: GraphNode) => d.x!)
-        .attr('y', (d: GraphNode) => (d.y ?? 0) - 15);
+    projects.forEach(project => {
+      const filteredTags = showLanguages
+        ? project.tags
+        : project.tags.filter(t => !languageTags.has(t.toLowerCase()));
+
+      const collapsedTags = filteredTags.map(t =>
+        collapseTag(t, parentMap, maxHierarchyLevel, hierarchy, tagSet)
+      );
+
+      let finalTags: string[] = [];
+
+      collapsedTags.forEach(tag => {
+        if (expandedNodes.has(tag)) {
+          const children = getChildren(tag, hierarchy);
+          if (children.length > 0) {
+            finalTags.push(...children);
+          } else {
+            finalTags.push(tag);
+          }
+        } else {
+          finalTags.push(tag);
+        }
+      });
+
+      const uniqueTags = Array.from(new Set(finalTags));
+
+      for (let i = 0; i < uniqueTags.length; i++) {
+        for (let j = i + 1; j < uniqueTags.length; j++) {
+          const source = uniqueTags[i];
+          const target = uniqueTags[j];
+          const key = [source, target].sort().join('---');
+          if (!linkMap.has(key)) {
+            linkMap.set(key, { source, target });
+          }
+        }
+      }
     });
 
-    (simulation.force('link') as d3.ForceLink<GraphNode, GraphLink>).links(graphData.links);
-  }, [projects, selectedTag, onTagClick, tagColorScale, showLanguages, minDegreeFilter]);
+    return { nodes, links: Array.from(linkMap.values()) };
+  }, [
+    projects,
+    tagColorScale,
+    showLanguages,
+    languageTags,
+    parentMap,
+    tagSet,
+    maxHierarchyLevel,
+    expandedNodes,
+  ]);
+
+  // Highlight connected nodes of selected tag
+  const highlightSet = useMemo(() => {
+      if (!selectedTag) return null;
+
+      const coTags = new Set<string>();
+      coTags.add(selectedTag);
+
+      projects.forEach(project => {
+        const filteredTags = showLanguages
+          ? project.tags
+          : project.tags.filter(t => !languageTags.has(t.toLowerCase()));
+
+        const collapsedTags = filteredTags.map(t =>
+          collapseTag(t, parentMap, maxHierarchyLevel, hierarchy, tagSet)
+        );
+
+        let finalTags: string[] = [];
+
+        collapsedTags.forEach(tag => {
+          if (expandedNodes.has(tag)) {
+            const children = getChildren(tag, hierarchy);
+            if (children.length > 0) {
+              finalTags.push(...children);
+            } else {
+              finalTags.push(tag);
+            }
+          } else {
+            finalTags.push(tag);
+          }
+        });
+
+        const uniqueTags = new Set(finalTags);
+        if (uniqueTags.has(selectedTag)) {
+          uniqueTags.forEach(tag => coTags.add(tag));
+        }
+      });
+
+      return coTags;
+    }, [
+      selectedTag,
+      projects,
+      showLanguages,
+      languageTags,
+      parentMap,
+      tagSet,
+      maxHierarchyLevel,
+      expandedNodes,
+    ]);
+
+
+  // Setup forces once graph ref and data ready
+  useEffect(() => {
+    if (!graphRef.current) return;
+
+    const centerX = containerRef.current ? containerRef.current.clientWidth / 2 : 400;
+    const centerY = containerRef.current ? containerRef.current.clientHeight / 2 : 300;
+
+    graphRef.current.d3Force('charge', d3.forceManyBody().strength(-250));
+    graphRef.current.d3Force('link', d3.forceLink().id((d: any) => d.id).distance(140).strength(1));
+    graphRef.current.d3Force('center', d3.forceCenter(centerX, centerY));
+    graphRef.current.d3Force(
+      'collide',
+      d3.forceCollide().radius((node: any) => Math.sqrt(node.val) * 7 + 15)
+    );
+
+    graphRef.current.d3ReheatSimulation();
+  }, [nodes, links]);
+  const getNodeRadius = (val: number) => Math.log(val + 1) * 10;
 
   return (
-    <svg
-      ref={svgRef}
-      viewBox="0 0 800 600" // This is important for responsive scaling
-      preserveAspectRatio="xMidYMid meet"
-      style={{
-        width: '100%',
-        height: 'auto',
-        aspectRatio: '4 / 3',
-        maxWidth: '100%',
-        minHeight: '300px',
-        display: 'block',
-        margin: '0 auto',
-      }}
-    />
+    <div ref={containerRef} style={{ position: 'relative', height: '100%' }}>
+      {selectedTag && (
+        <button
+          onClick={() => {
+            graphRef.current?.zoomToFit(400, 40); // duration ms, padding px
+            onTagClick(null); // clear selection
+            if (onReset) onReset(); // optional callback to parent
+          }}
+          style={{
+            position: 'absolute',
+            top: 10,
+            right: 10,
+            zIndex: 10,
+            padding: '6px 12px',
+            backgroundColor: '#fff',
+            border: '1px solid #ccc',
+            borderRadius: '6px',
+            cursor: 'pointer',
+            fontSize: '14px',
+          }}
+        >
+          Reset
+        </button>
+      )}
+      <ForceGraph2D
+        ref={graphRef}
+        graphData={{ nodes, links }}
+        nodeColor={node => node.color}
+        nodeCanvasObject={(node: Node, ctx, globalScale) => {
+          const label = node.id;
+          const fontSize = 12 / globalScale;
+
+          const isHighlighted = !highlightSet || highlightSet.has(node.id);
+          ctx.fillStyle = isHighlighted ? node.color : '#ddd';
+          ctx.beginPath();
+          ctx.arc(node.x!, node.y!, getNodeRadius(node.val), 0, 2 * Math.PI, false);
+
+          ctx.fill();
+
+          ctx.font = `${fontSize}px Sans-Serif`;
+          ctx.fillStyle = isHighlighted ? '#000' : '#bbb';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(label, node.x!, node.y! - Math.sqrt(node.val) * 6 - 5);
+        }}
+        linkWidth={link =>
+          highlightSet && highlightSet.has(link.source as string) && highlightSet.has(link.target as string)
+            ? 2
+            : 1
+        }
+        linkColor={link =>
+          highlightSet && highlightSet.has(link.source as string) && highlightSet.has(link.target as string)
+            ? '#000'
+            : '#ccc'
+        }
+        onNodeClick={(node: Node) => {
+          onTagClick(node.id);
+        }}
+        cooldownTicks={100}
+        width={containerRef.current?.clientWidth || 800}
+        height={containerRef.current?.clientHeight || 600}
+        backgroundColor="#f0f0f0"
+      />
+    </div>
   );
 };
 
