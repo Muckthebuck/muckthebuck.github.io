@@ -305,7 +305,7 @@ const hierarchy: TagNode = {
 
   "Graphics & Visualization": {
     "Computer Graphics":{
-      "Computational Geomtery":{
+      "Computational Geometry":{
         "Polygon Cutting":{},
         "Geometric Algorithms":{},
         "Polygon Clipping":{},
