@@ -122,7 +122,7 @@ const App: React.FC = () => {
         <section id="projects">
           <div className="projects-header">
             <h1>Projects</h1>
-            <p>Explore my work below — filter by clicking a <strong>graph node</strong>.</p>
+            <p>Explore my work below — filter by clicking a <strong>graph node</strong> and learn more by clicking on <strong>projects</strong>.</p>
             <div className="graph-tip">
               💡 <strong>Tip:</strong> Click a node in the graph to show projects with shared topics.
             </div>
