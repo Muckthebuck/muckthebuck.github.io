@@ -105,6 +105,13 @@ const hierarchy: TagNode = {
       "3D Perception": {},
       "Image Processing": {},
       "Gaze Tracking": {}
+    },
+    "Machine Learning":{
+      "SVM":{},
+      "Forward-Backward Algorithm":{},
+      "KNN":{},
+      "Mixture of Gaussians":{},
+      "Baum-Welch":{}
     }
   },
 
@@ -138,6 +145,9 @@ const hierarchy: TagNode = {
         "Ontologies": {},
         "Semantic Networks": {},
         "Knowledge Graphs": {}
+      },
+      "Features":{
+        MFCC:{},
       },
       "Reasoning & Inference": {
         "Deductive Reasoning": {},
@@ -210,6 +220,29 @@ const hierarchy: TagNode = {
       "PID Control": {},
       "Optimal Control": {}
     },
+    "Signal Processing": {
+      "Speech Recognition": {},
+      "Fourier Transform": {},
+      "Fast Fourier Transform (FFT)": {},
+      "Digital Filtering": {},
+      "Low-Pass Filters": {},
+      "High-Pass Filters": {},
+      "Band-Pass Filters": {},
+      "Wavelet Transform": {},
+      "Spectral Analysis": {},
+      "Z-Transform": {},
+      "Laplace Transform": {},
+      "Discrete-Time Signal Processing": {},
+      "Noise Reduction": {},
+      "Sampling and Quantization": {},
+      "Filter Design": {},
+      "Time-Frequency Analysis": {},
+      "System Response Analysis": {},
+      "Sensor Signal Conditioning": {},
+      "Signal Reconstruction": {},
+      "Adaptive Filtering": {},
+      "Hilbert Transform": {}
+    },
     "System Identification": {
       "System Modeling": {},
       "Parameter Estimation": {},
@@ -271,31 +304,68 @@ const hierarchy: TagNode = {
   },
 
   "Graphics & Visualization": {
-    "Rendering Engines": {
-      OpenGL: {},
-      WebGL: {},
-      Vulkan: {},
-      Unity: {},
-      Unreal: {},
-      Godot: {}
-    },
-    "Shaders & Effects": {
-      GLSL: {},
-      "Physically Based Rendering": {},
-      GPGPU: {}
-    },
-    "3D Modeling": {
-      Blender: {},
-      "Mesh Processing": {},
-      "Ray Tracing": {},
-      Shaders: {}
+    "Computer Graphics":{
+      "Computational Geomtery":{
+        "Polygon Cutting":{},
+        "Geometric Algorithms":{},
+        "Polygon Clipping":{},
+        "Geometric Data Structures":{
+        "Doubly Connected Edge List (DCEL)":{}
+        },
+        "Voronoi Diagram":{}
+      },
+      "Graphics Pipeline":{
+      "Rendering":{}
+      },
+      "Rendering Engines": {
+        OpenGL: {},
+        WebGL: {},
+        Vulkan: {},
+        Unity: {},
+        Unreal: {},
+        Godot: {}
+      },
+      "Shaders & Effects": {
+        "Shader Engines":{
+          Cg: {},
+          GLSL: {},
+          HLSL: {},
+          "Physically Based Rendering": {},
+          GPGPU: {}
+        },
+        "Shader methods":{
+            "Phong Shading": {},
+            "Gouraud Shading": {},
+            "Lighting Models": {}
+        }
+      },
+      "3D Modeling": {
+        Blender: {},
+        "Mesh Processing": {},
+        "Ray Tracing": {},
+        Shaders: {}
+      },
+      "Procedural Generation":{
+        "Wave Function Collapse": {},
+        "Level Design": {}
+      },
     },
     Visualization: {
-      D3: {},
-      Matplotlib: {},
-      Plotly: {},
-      "Graph Visualization": {},
-      ThreeJS: {}
+        D3: {},
+        Matplotlib: {},
+        Plotly: {},
+        "Graph Visualization": {},
+        ThreeJS: {}
+      },
+    
+    "Game": {
+      "Game Design":{
+        "Level Design":{},
+        "Gameplay Design": {},
+        "3D Modelling": {}
+      },
+      "3D Platformer": {},
+      "Playtesting":{}
     }
   },
 
@@ -304,7 +374,8 @@ const hierarchy: TagNode = {
     "Numerical Optimization": {},
     "Probability & Statistics": {},
     "Information Theory": {},
-    "Graph Theory": {}
+    "Graph Theory": {},
+    "Physics": {}
   },
 
   "Data Science & Analysis": {
@@ -340,7 +411,9 @@ const hierarchy: TagNode = {
       TypeScript: {},
       React: {},
       Tailwind: {},
-      NextJS: {}
+      NextJS: {},
+      "Vue.js": {},
+      "WASM": {}
     },
     Backend: {
       NodeJS: {},
@@ -360,13 +433,76 @@ const hierarchy: TagNode = {
 
   "Networking & Systems": {
     Networking: {
-      SONiC: {},
-      YANG: {},
-      Redis: {},
-      MQTT: {},
-      HTTP: {},
-      TCP_IP: {}
+      "Netowrking Protocols": {
+        Routing: {
+          BGP: {},
+          OSPF: {},
+          EIGRP: {},
+          RIP: {},
+          "IS-IS": {},
+          Static_Routing: {}
+        },
+        Switching: {
+          STP: {},
+          RSTP: {},
+          MSTP: {},
+          VLAN: {}
+        },
+        Application: {
+          HTTP: {},
+          HTTPS: {},
+          MQTT: {},
+          DNS: {},
+          DHCP: {},
+          SNMP: {}
+        },
+        Transport: {
+          TCP: {},
+          UDP: {}
+        },
+        Network: {
+          IP: {},
+          ICMP: {},
+          ARP: {},
+          NAT: {}
+        },
+        Security: {
+          IPsec: {},
+          SSL_TLS: {},
+          SSH: {}
+        }
+      },
+      "Network Tech": {
+        SONiC: {},
+        YANG: {},
+        Redis: {},
+        Netconf: {},
+        RESTCONF: {},
+        OpenFlow: {},
+        VXLAN: {},
+        EVPN: {},
+        SDN: {},
+        NFV: {}
+      },
+      "Network Tools": {
+        GNS3: {},
+        Wireshark: {},
+        FRRouting: {},
+        CiscoPacketTracer: {},
+        Nmap: {},
+        Ansible: {},
+        Netmiko: {},
+        Pcap: {}
+      },
+      Monitoring_and_Management: {
+        Prometheus: {},
+        Grafana: {},
+        Zabbix: {},
+        Nagios: {},
+        Telegraf: {}
+      }
     },
+
     "Operating Systems": {
       Linux: {},
       "Embedded OS": {},
@@ -408,8 +544,22 @@ const hierarchy: TagNode = {
       Tracheostomy: {},
       "Health Monitoring": {},
       "Wearable Devices": {},
-      "Assistive Technology":{},
-      "Brain Computer Interface (BCI)":{}
+      "Assistive Technology":{
+        Ophthalmodynamometry:{
+          "Intracranial Pressure":{}
+        },
+        "Medical Device":{},
+      },
+      "Brain Computer Interface (BCI)":{
+        "EEG": {},
+        "Motor Imagery": {},
+        "Multiple Sclerosis": {},
+        "Neuroengineering": {},
+        "Source-Level Analysis": {},
+        "Alpha Power": {},
+        "Beta Band": {},
+        "Dipole Fitting":{},
+      }
     },
     "Autonomous Systems": {
       "Self-driving Cars": {},

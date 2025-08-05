@@ -33,7 +33,8 @@
     "fullDescription": "A modular Arduino system integrating timer, LED matrix, buzzer and sensors to create a smart study buddy.",
     "tags": ["Arduino", "Embedded", "Hardware", "C++", "CAD"],
     "link": "https://github.com/Muckthebuck/ESI_Project",
-    "githubLink": "https://github.com/Muckthebuck/ESI_Project"
+    "githubLink": "https://github.com/Muckthebuck/ESI_Project",
+    "bannerImage": "/images/front_panel (2).png"
   },
   {
     "id": "PointNet",
@@ -77,7 +78,8 @@
       "JIT",
       "Optimal Control",
       "Bayesian Methods",
-      "Binary Search"
+      "Binary Search", 
+      "Redis"
     ],
     "githubLink": "https://github.com/Muckthebuck/Learning-Dynamic-Systems",
     "paperLink": "https://github.com/Muckthebuck/Learning-Dynamic-Systems/blob/main/E_21_WERI_009.pdf"
@@ -101,7 +103,7 @@
   "id": "Underwater_Stereo_Depth",
   "title": "Self-Supervised Underwater Stereo Depth Estimation",
   "description": "A transfer learning pipeline for stereo depth estimation in underwater scenes using self-supervised learning and synthetic labels.",
-  "fullDescription": "Acquiring high-quality training data for underwater depth estimation poses numerous challenges, including poor visibility, refraction, and the scarcity of labeled datasets. Moreover, due to the domain gap between in-air and underwater imagery, models trained in air cannot be directly applied to underwater scenarios.\n\nTo tackle this, we introduce a novel transfer learning-based pipeline to fine-tune stereo depth estimation models specifically for underwater environments. Our approach leverages self-supervised learning and generates pseudo-ground-truth stereo pairs using a fine-tuned underwater monocular depth model. By applying synthetic labels—an idea adapted from in-air methods—we convert monocular underwater datasets into usable stereo training data.\n\nThe framework integrates domain-specific enhancements such as underwater data augmentation and color correction to improve performance. To assess generalization, we conducted zero-shot evaluations on four publicly available datasets from FLSea, selecting 100 images from each. Our fine-tuned stereo model demonstrates significantly improved depth resolution and accuracy in these zero-shot tests.\n\nThis project provides a scalable method for underwater stereo depth estimation without requiring expensive data annotation and offers practical value for marine robotics, exploration, and perception tasks in underwater environments.",
+  "fullDescription": "This project was done under Dr. Ye Pu's supervision from Department of Electrical and Electronics Engineering, University of Melbourne. Acquiring high-quality training data for underwater depth estimation poses numerous challenges, including poor visibility, refraction, and the scarcity of labeled datasets. Moreover, due to the domain gap between in-air and underwater imagery, models trained in air cannot be directly applied to underwater scenarios.\n\nTo tackle this, we introduce a novel transfer learning-based pipeline to fine-tune stereo depth estimation models specifically for underwater environments. Our approach leverages self-supervised learning and generates pseudo-ground-truth stereo pairs using a fine-tuned underwater monocular depth model. By applying synthetic labels—an idea adapted from in-air methods—we convert monocular underwater datasets into usable stereo training data.\n\nThe framework integrates domain-specific enhancements such as underwater data augmentation and color correction to improve performance. To assess generalization, we conducted zero-shot evaluations on four publicly available datasets from FLSea, selecting 100 images from each. Our fine-tuned stereo model demonstrates significantly improved depth resolution and accuracy in these zero-shot tests.\n\nThis project provides a scalable method for underwater stereo depth estimation without requiring expensive data annotation and offers practical value for marine robotics, exploration, and perception tasks in underwater environments.",
   "tags": [
     "Stereo Depth Estimation",
     "Underwater Vision",
@@ -239,9 +241,9 @@
 },
 {
   "id": "Cerce",
-  "title": "MBSI CereCe Project (prev. Cerebruh)",
-  "description": "Project CereCe aims to empower self-directed mobility for tetraplegic individuals by leveraging gaze-tracking and brain-computer interface (BCI) technology.",
-  "fullDescription": "In this project I worked as the integeration tieam lead, communicating with BCI teams and computer vision team to integreate the BCI and gaze-tracking systems into a single system that can be used by tetraplegic individuals to control a wheelchair.\n\nThe project is currently in the research phase, with the goal of developing a prototype that can be tested with real users. The project is being conducted in collaboration with the mentors from University of Melbourne and sponsored by MentaLab.\n\n During my role, I was responsible for:\n - Integrating the BCI and gaze-tracking systems into a single system\n- Developing the software architecture for the system\n- Conducting background research and developing miniature prototype.\n- Coordinating with the BCI and computer vision teams to ensure that the system is working as intended\n- Educating the complete team with industry standard practices to ensure good development environment. I also helped setup organisation github and help internal workshops on object oriented programming and dev tools like vs-code and Github.\n\nThe project is still in its early stages, but I am confident that it has the potential to make a significant impact on the lives of tetraplegic individuals.",
+  "title": "MBSI CereCe Project (formerly Cerebruh)",
+  "description": "Project CereCe empowers self-directed mobility for individuals with tetraplegia by integrating gaze-tracking and brain-computer interface (BCI) technologies.",
+  "fullDescription": "**Project CereCe** aims to empower **self-directed mobility** for individuals with **tetraplegia** by integrating **gaze-tracking** and **brain-computer interface (BCI)** technologies into a unified control system for assistive devices, such as wheelchairs.\n\nCurrently in its **research and prototyping phase**, this project is being conducted in collaboration with mentors from the **University of Melbourne** and is sponsored by **MentaLab**.\n\n### My Role: Integration Team Lead\n\nAs the **Integration Team Lead**, I was responsible for bridging the efforts of the BCI and computer vision teams to deliver a functional, testable prototype. My key contributions included:\n\n- 🧠 Integrating BCI and gaze-tracking systems into a seamless control system  \n- 🧩 Designing and implementing the system's **software architecture**  \n- 🔍 Conducting background research and building early-stage **miniature prototypes**  \n- 🤝 Coordinating between cross-functional teams to ensure system reliability  \n- 🧑‍🏫 Leading internal **tech workshops** on:\n  - Object-Oriented Programming (OOP)\n  - Development tools like **VS Code** and **GitHub**\n- 🛠️ Setting up the organization’s GitHub structure and promoting **industry-standard practices** for effective collaboration\n\nWhile still in its early stages, **CereCe** holds immense potential to improve quality of life by enabling hands-free, intuitive control for individuals with severe mobility limitations.\n\n🔗 [Follow the project on Instagram →](https://www.instagram.com/mbsi_projectcerece/)",
   "tags": [
     "Brain Computer Interface (BCI)",
     "Gaze Tracking",
@@ -253,7 +255,189 @@
     "Integration"
   ],
   "link": "https://www.instagram.com/mbsi_projectcerece/"
+},
+{
+  "id": "ChikiDeliveryService",
+  "title": "Chiki’s Delivery Service - Casual 3D Platformer",
+  "description": "Chiki’s Delivery Service is a casual 3D platformer featuring a charming chicken protagonist delivering packages across procedurally generated levels, emphasizing simple controls, physics-based gameplay, and replayability through timed challenges and medals.",
+  "fullDescription": "**Chiki’s Delivery Service** is a casual 3D platformer developed using **Unity**, where players control Chiki, an aspiring delivery chick tasked with navigating various obstacle-filled, procedurally generated levels to deliver packages quickly and efficiently.\n\nThe game focuses on approachable gameplay mechanics such as jumping, gliding, and physics-based package handling, enhanced by a medal system to encourage replayability and mastery.\n\n### My Role: Gameplay Designer & Level Designer\n\nAs part of the core development team, I contributed extensively by:\n\n- 🎮 Designing and implementing core **gameplay mechanics** including player movement, package delivery, and the medal reward system\n- 🌍 Leading the **procedural generation** of terrains and maps to ensure varied and engaging level layouts. Created an algorithm inspired by Wave function collapse which solves constraint satisfaction problem on 3D grid.\n- 🏗️ Collaborating on **level design** with the team to integrate verticality, obstacles, and pacing that balance challenge with fun\n- 📖 Developing **storytelling elements and gameplay objectives** to deepen player engagement\n- 📦 Managing **game assets and organization** to ensure cohesive visual and gameplay experience\n- 🧪 Conducting **playtesting and surveys** to collect player feedback and guide iterative improvements\n\nI also maintained regular communication with other teams — physics, animation, shaders, and sound — to ensure smooth system integration. Progress was tracked through weekly meetings and documentation using Confluence.",
+  "tags": [
+    "Unity",
+    "Procedural Generation",
+    "Level Design",
+    "Gameplay Design",
+    "3D Platformer",
+    "HLSL",
+    "Physics",
+    "Playtesting",
+    "Wave Function Collapse",
+    "3D Modelling"
+  ],
+  "githubLink": "https://github.com/Kaobara/TeaStainStudiosUnityProject",
+  "bannerImage": "/images/chiki.gif"
+},
+{
+  "id": "MelbourneTelescopeProject",
+  "title": "Great Melbourne Telescope Restorative Project",
+  "description": "Contributed to the restoration of the Great Melbourne Telescope by developing an interactive Star Map interface and streamlining the development environment.",
+  "fullDescription": "As a **Software Engineer Intern** on the Melbourne Telescope Restorative Project at **Museums Victoria**, I focused on enhancing user experience and development workflows for the Great Melbourne Telescope’s digital interface.\n\nKey contributions included:\n\n- ⭐ Developed an interactive **Star Map interface** using **Django**, **Vue.js**, and **C++**, enabling users to navigate the night sky intuitively\n- 🐳 Introduced **Docker** to simplify and standardize development and deployment processes across the team\n- 🛠️ Automated environment setup and deployment tasks through **Bash scripting**, significantly boosting developer productivity and reducing onboarding time\n\nThis internship spanned from **March to June 2024** and provided valuable experience in full-stack development, cross-language integration, and DevOps automation.",
+  "tags": [
+    "Django",
+    "Vue.js",
+    "C++",
+    "Docker",
+    "Bash",
+    "WASM",
+    "Frontend",
+    "DevOps",
+    "Internship",
+    "WebGL",
+    "C"
+  ],
+  "link": "https://museumsvictoria.com.au/scienceworks/whats-on/great-melbourne-telescope-restoration/"
+},
+{
+  "id": "BCI_MS_FeasibilityStudy",
+  "title": "Feasibility of Source-Level BCI for Users with Multiple Sclerosis (MS)",
+  "description": "This study explores the feasibility of using source-level EEG analysis for Brain-Computer Interface (BCI) applications in individuals with Multiple Sclerosis (MS).",
+  "fullDescription": "**This research** evaluates the potential of source-level Brain-Computer Interface (BCI) systems for individuals with **Multiple Sclerosis (MS)** using previously recorded EEG data.\n\nThe study analyzed motor imagery EEG signals from **eight participants**—one with MS and seven neurotypical controls—focusing on imagined left and right-hand movements. Using **equivalent current dipole (ECD) cluster fitting**, the research localized brain activity to the **motor cortices** and compared spatial patterns between the MS and control groups.\n\n### Key Findings:\n- 🧠 Dipole sources were successfully localized to **motor cortices** across all participants.\n- ⚡ Notable **spatial differences** were observed between the MS participant and controls, though core motor areas were still activated.\n- 📉 **Reduced alpha power** was found in the MS participant during motor imagery, suggesting altered cortical activation.\n- 🧩 **Beta-band power** showed potential as a distinguishing feature between imagined left and right-hand movements for users with MS.\n\n### Clinical Relevance:\nThis work provides a **proof of concept** that **BCI systems** can be adapted for users with MS, contributing toward **accessible, user-specific assistive technologies** for individuals with motor impairments.\n\n🔗 [View Publication →](https://ieeexplore.ieee.org/document/10340364)",
+  "tags": [
+    "Brain Computer Interface (BCI)",
+    "EEG",
+    "Motor Imagery",
+    "Multiple Sclerosis",
+    "Neuroengineering",
+    "Source-Level Analysis",
+    "Alpha Power",
+    "Beta Band",
+    "Dipole Fitting",
+    "Assistive Technology",
+    "Localisation",
+    "Research",
+    "Internship"
+  ],
+  "paperLink": "https://ieeexplore.ieee.org/document/10340364",
+  "bannerImage": "/images/SMDipoleDensity.png"
+},
+{
+  "id": "OphthalmodynamometryDevice",
+  "title": "Non-Invasive Intracranial Pressure Measurement Device Prototype",
+  "description": "Explored a cost-effective and simplified method for non-invasive intracranial pressure estimation through early-stage prototyping and component research.",
+  "fullDescription": "As a **Research Engineer** at the **John Neuro Bionics Lab** (University of Melbourne), I worked on a feasibility study to explore a simplified and low-cost method for **Ophthalmodynamometry**—a non-invasive technique for estimating **intracranial pressure (ICP)** by observing eye pressure and retinal vessel pulsation.\n\nThe goal was to investigate whether a basic device could be built using inexpensive components to replace current systems that require two specialists and expensive setups.\n\n### Key Contributions:\n- 🛠️ Built an **early-stage hardware prototype** using a **pressure sensor**, **green LED**, and **sensor arrays** to simulate eye pressure application and retinal observation\n- 🔍 Conducted research into **cost-effective hardware components** and system configurations suitable for future development\n- ⚙️ Explored practical design considerations for a **portable, single-operator setup**, focusing on hardware feasibility\n- 📉 Demonstrated the basic **viability of a simplified system**, laying groundwork for further development and signal processing integration by the broader team\n\nThis work served as a **proof of concept** that a compact and affordable Ophthalmodynamometry device could be developed for use in clinical or field environments, particularly in resource-constrained settings.",
+  "tags": [
+    "Medical Device",
+    "Intracranial Pressure",
+    "Ophthalmodynamometry",
+    "MATLAB",
+    "Python",
+    "C++",
+    "Biomedical Engineering",
+    "Signal Processing",
+    "Embedded & Hardware",
+    "Research"
+  ],
+  "link": "https://biomedical.eng.unimelb.edu.au/john-neurobionics"
+},
+
+{
+  "id": "PhongShaderWorkshop",
+  "title": "Lighting & Shading in Unity – Phong Illumination Model (Cg/HLSL)",
+  "description": "Explored lighting models in Unity using Cg/HLSL shaders, focusing on Phong and Gouraud shading techniques through the rendering pipeline.",
+  "fullDescription": "This workshop involved investigating and implementing the **Phong illumination model** in Unity using custom shaders written in **Cg/HLSL**. The focus was on understanding how lighting is computed at different stages of the **rendering pipeline**, including **per-vertex (Gouraud)** and **per-fragment (Phong)** shading.\n\n### Key Tasks:\n- 💡 Analyzed and debugged an incomplete **Gouraud shader** to correctly implement Phong lighting at the vertex level\n- 🎮 Worked with Unity scene files such as `MainScene.unity` and custom C# scripts like `GenerateCube.cs` (for mesh and normals) and `PointLight.cs` (for light data)\n- 🧠 Gained hands-on understanding of **shader pipeline stages** and how illumination changes based on where in the pipeline it's computed\n- 🖥️ Compared visual differences between **Gouraud** and **Phong** shading to understand trade-offs in visual fidelity and performance\n\nThis workshop deepened my knowledge of **real-time rendering**, **lighting models**, and low-level **GPU programming** within the Unity engine.",
+  "tags": [
+    "Unity",
+    "Shaders",
+    "Cg",
+    "HLSL",
+    "Phong Shading",
+    "Gouraud Shading",
+    "Graphics Pipeline",
+    "Rendering",
+    "Computer Graphics",
+    "Lighting Models"
+  ],
+  "githubLink": "https://github.com/Muckthebuck/Workshop-8"
+},
+
+{
+  "id": "VoronoiDiagramC",
+  "title": "Voronoi Diagram Generator in C",
+  "description": "Implemented a Voronoi diagram generator in C using a bounding polygon and centroid data (watchtower points) as input.",
+  "fullDescription": "**VoronoiDiagram** is a C-based implementation that generates a **Voronoi diagram** given an initial **bounding polygon** and a set of **centroid data points** (referred to as *watchtower points*).\n\nThe program constructs Voronoi cells such that each point in a cell is closer to its associated watchtower than to any other. It respects polygonal boundaries, ensuring all generated regions are clipped within a user-defined area.\n\n### Key Features:\n- 🗺️ Accepts **polygonal boundaries** as constraints for the generated diagram\n- 🛰️ Takes **centroid/watchtower coordinates** as input\n- 📐 Computes and constructs **Voronoi cells** using geometric algorithms\n- 🧮 Written entirely in **C**, focusing on performance and low-level memory management\n\nThis project demonstrates proficiency in **computational geometry**, **spatial partitioning**, and **geometric data structures**, with real-world applications in mapping, environmental monitoring, and cellular network planning.",
+  "tags": [
+    "Voronoi Diagram",
+    "C",
+    "Computational Geometry",
+    "Geometric Algorithms",
+    "Polygon Clipping"
+  ],
+  "githubLink": "https://github.com/Muckthebuck/Voronoi-Diagram",
+  "bannerImage":"/images/voronoi.png"
+},
+{
+  "id": "DCELPartitioning",
+  "title": "DCEL-Based Polygon Partitioning System in C",
+  "description": "Implemented a DCEL data structure in C to support geometric space partitioning, including cutting convex polygons, for regional analysis based on watchtower data.",
+  "fullDescription": "This project involved building a **Doubly Connected Edge List (DCEL)** in **C** to represent and manipulate **polygonal subdivisions** within a given bounding area, designed for a bushfire-planning scenario in **Victoria, Australia**.\n\nThe primary goal was to associate **watchtower locations** with spatial regions and evaluate **population coverage** across postcode areas, supporting dynamic geometric operations such as cutting regions in response to user interaction or policy needs.\n\n### Key Features:\n- 🧱 Implemented a fully functional **DCEL data structure** to represent planar graphs and polygonal faces\n- ✂️ Supported **cut operations** that allowed splitting **convex polygons** into two valid sub-regions while maintaining DCEL integrity\n- 🛰️ Processed **watchtower point data** and **postcode population data** for spatial querying and region assignment\n- 🧭 Enabled user-driven **polygon editing** to assess how territorial changes affect coverage\n- ⚙️ Written entirely in **C**, with attention to memory safety and efficient pointer-based manipulation\n\nThis project showcased the ability to apply advanced data structures to **real-world spatial partitioning problems**, laying groundwork for applications in **GIS**, **planning**, and **computational geometry**.",
+  "tags": [
+    "Doubly Connected Edge List (DCEL)",
+    "C",
+    "Computational Geometry",
+    "Polygon Cutting",
+    "Geometric Data Structures"
+  ],
+  "githubLink": "https://github.com/Muckthebuck/Alg_data_struct_ass1_DCEL/tree/main",
+  "bannerImage": "/images/dcel.png"
+},
+{
+  "id": "GNS3RoutingExploration",
+  "title": "Exploration of Internet Routing using GNS3",
+  "description": "A hands-on exploration and comparative analysis of Internet routing protocols using GNS3 and FRRouting, focused on RIP, OSPF, and EIGRP under various simulated network scenarios.",
+  "fullDescription": "**Exploration of Internet Routing using GNS3** is a research and simulation-based project that investigates the behaviour, performance, and design principles of major Internet routing protocols—**RIP**, **OSPF**, and **EIGRP**—through hands-on experimentation.\n\nLeveraging **GNS3 (Graphical Network Simulator-3)** and **FRRouting (FRR)**, we created small-scale virtual networks and observed protocol behaviour using tools like **Wireshark**. Through carefully crafted experiments, we analysed **routing convergence**, **efficiency**, and **scalability** under various conditions, such as link failures and changes in link cost.\n\n### Project Objectives:\n1. 🧭 Compare the functionality and characteristics of **RIP**, **OSPF**, and **EIGRP** across topologies\n2. ⏱️ Measure and analyse **convergence time**, **efficiency**, and **protocol overhead**\n3. 🧠 Explore strengths, weaknesses, and suitable use-cases for each protocol\n4. 🛠️ Gain hands-on experience with **GNS3**, **FRRouting**, and **Wireshark** for network simulation and diagnostics\n\n### Technical Highlights:\n- Implemented multiple simulated topologies to test protocol behaviour\n- Used **graph theory** concepts and algorithms like **Dijkstra’s**, **Bellman-Ford**, and **Diffusing Update Algorithm** to inform theoretical background\n- Visualised protocol message exchange using **Wireshark packet capture**\n- Simulated **failure scenarios** to observe protocol robustness and adaptability\n\nThis project bridged theoretical networking knowledge with practical, scenario-driven insights—building core competencies in network design, troubleshooting, and routing architecture evaluation.",
+  "tags": [
+    "Networking",
+    "Routing",
+    "GNS3",
+    "FRRouting",
+    "OSPF",
+    "EIGRP",
+    "RIP",
+    "Wireshark",
+    "Graph Theory",
+    "Dijkstra's Algorithm",
+    "Bellman-Ford Algorithm"
+  ],
+  "githubLink": "https://github.com/Muckthebuck/Exploration-of-Internet-Routing-using-GNS3",
+  "paperLink": "https://github.com/Muckthebuck/Exploration-of-Internet-Routing-using-GNS3/blob/main/ELEN90061_LDI_Project.pdf"
+},
+{
+  "id": "SpeechHMM",
+  "title": "Speech Recognition with Hidden Markov Models (HMM)",
+  "description": "A speech recognition system that classifies spoken food-related words using Hidden Markov Models and MFCC feature extraction.",
+  "fullDescription": "**Speech Recognition with Hidden Markov Models** is a machine learning project focused on building a voice-based classifier that identifies spoken instances of daily food-related words such as “Rice”, “Pizza”, “Burger”, “Sandwich”, “Sausage”, “Meatball”, and “Spaghetti”.\n\nThe recognizer uses **Mel-Frequency Cepstral Coefficients (MFCC)** to extract features from speech audio and then applies **Hidden Markov Models (HMMs)**—trained via the **Baum-Welch algorithm**—to classify input speech signals.\n\n### Key Project Steps:\n- **Data Preparation**: Curated and recorded speech samples for seven distinct food-related words. Divided data into training and testing sets.\n- **Feature Extraction**: Implemented MFCC-based feature extraction to transform raw audio into meaningful signal representations.\n- **Model Training**: Trained individual HMMs for each word using the Baum-Welch algorithm (an Expectation-Maximization approach).\n- **Model Evaluation**: Classified test audio by selecting the HMM that best fits the input sequence.\n\n### Advanced Exploration:\n- Investigated the impact of hyperparameters (number of MFCCs, hidden states, and observation symbols) on model performance.\n- **Bonus Analysis**: Compared HMM performance with alternate classifiers like SVM, Naive Bayes, and Neural Networks, discussing the pros and cons of EM-based HMM training versus discriminative approaches.\n\nThis project offered a comprehensive, end-to-end introduction to speech signal processing, HMM-based modeling, and practical challenges in acoustic classification.",
+  "tags": [
+    "Speech Recognition",
+    "Hidden Markov Models",
+    "MFCC",
+    "Machine Learning",
+    "Baum-Welch",
+    "Signal Processing",
+    "Classification",
+    "Python"
+  ],
+  "githubLink": "https://github.com/Muckthebuck/Speech-Recognition-with-Hidden-Markov-Models",
+  "paperLink": "https://github.com/Muckthebuck/Speech-Recognition-with-Hidden-Markov-Models/blob/main/report.pdf"
 }
+
+
+
+
+
+
+
+
+
+
 
 
 ]

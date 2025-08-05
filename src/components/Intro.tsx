@@ -19,7 +19,9 @@ const interests = [
     { label: 'Signal Processing', icon: '📊' },
     {label: 'System Identification ', icon: '🔍' }
 ];
-
+const firstname="mukul"
+const lastname="chodhary"
+const number_n = "1"
 const Intro: React.FC = () => {
     const [copied, setCopied] = React.useState(false);
 
@@ -53,10 +55,10 @@ const Intro: React.FC = () => {
             <a href="https://linkedin.com/in/mukulchodhary" target="_blank" rel="noopener noreferrer">
               <LinkedInIcon /> LinkedIn
             </a>
-            <a href="mailto:mukulchodhary1@gmail.com" target="_blank" rel="noopener noreferrer">
+            {/* <a href="mailto:mukulchodhary1@gmail.com" target="_blank" rel="noopener noreferrer">
                     <MailIcon /> Email
-            </a>
-             <button onClick={handleCopyEmail} title="Copy email"> 
+            </a> */}
+             <button id="contact-button" onClick={handleCopyEmail} title="Copy email"> 
                     <CopyIcon /> Copy Email
                     {copied && <span className="copied-tooltip">Copied!</span>}
             </button>
