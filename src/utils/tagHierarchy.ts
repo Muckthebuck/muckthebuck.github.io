@@ -41,80 +41,133 @@ const hierarchy: TagNode = {
   },
 
   "Machine Learning & Deep Learning": {
-    "Frameworks": {
-      TensorFlow: {},
-      "PyTorch": {},
-      Keras: {},
-      JAX: {},
-      "scikit-learn": {},
-      "scikit-image": {},
-      "OpenCV": {},
-      "Hugging Face": {},
-      "spaCy": {},
-      "NLTK": {},
-      "Transformers": {},
-      "FastAPI": {},
-      "Streamlit": {},
-      "Gradio": {}
-    },
-    "Neural Networks": {
-      DNN: {},
-      CNN: {},
-      RNN: {},
-      LSTM: {},
-      GRU: {},
-      MLP: {},
-      PointNet: {}
-    },
-    "Modern Architectures": {
-      Transformer: {},
-      BERT: {},
-      GPT: {},
-      Diffusion: {},
-      "Vision Transformer": {},
-      CLIP: {},
-      SAM: {},
-      NeRF: {},
-      LoRA: {},
-      RLHF: {}
-    },
-    "Learning Paradigms": {
-      "Self-Supervised Learning": {},
-      "Transfer Learning": {},
-      "Few-Shot Learning": {},
-      "Unsupervised Learning": {},
-      "Reinforcement Learning": {},
-      "Online Learning": {},
-      "Contrastive Learning": {}
-    },
-    "3D Deep Learning": {
-      "Point Cloud": {},
-      Classification: {},
-      Segmentation: {},
-      "3D Object Detection": {},
-      "Scene Reconstruction": {}
-    },
-    "Computer Vision": {
-      "Image Classification": {},
-      "Object Detection": {},
-      "Image Segmentation": {},
-      "Stereo Depth Estimation": {},
-      "Underwater Vision": {},
-      "Optical Flow": {},
-      "Super Resolution": {},
-      "3D Perception": {},
-      "Image Processing": {},
-      "Gaze Tracking": {}
-    },
-    "Machine Learning":{
-      "SVM":{},
-      "Forward-Backward Algorithm":{},
-      "KNN":{},
-      "Mixture of Gaussians":{},
-      "Baum-Welch":{}
-    }
+        "Frameworks & Libraries": {
+          "General ML/DL Frameworks": {
+            "TensorFlow": {},
+            "PyTorch": {},
+            "Keras": {},
+            "JAX": {},
+            "scikit-learn": {},
+            "scikit-image": {},
+            "OpenCV": {}
+          },
+          "Natural Language Processing (NLP)": {
+            "Hugging Face": {},
+            "spaCy": {},
+            "NLTK": {},
+            "Transformers": {}
+          },
+          "Model Deployment & Interfaces": {
+            "FastAPI": {},
+            "Streamlit": {},
+            "Gradio": {}
+          }
+        },
+        "Neural Network Types": {
+          "DNN": {},
+          "CNN": {},
+          "RNN": {},
+          "LSTM": {},
+          "GRU": {},
+          "MLP": {},
+          "PointNet": {}
+        },
+        "Modern Architectures": {
+          "Transformer": {},
+          "BERT": {},
+          "GPT": {},
+          "Diffusion Models": {},
+          "Vision Transformer": {},
+          "CLIP": {},
+          "SAM": {},
+          "NeRF": {},
+          "LoRA": {},
+          "RLHF": {}
+        },
+        "Learning Paradigms": {
+          "Supervised Learning": {},
+          "Unsupervised Learning": {},
+          "Semi-Supervised Learning": {},
+          "Self-Supervised Learning": {},
+          "Transfer Learning": {},
+          "Few-Shot Learning": {},
+          "Reinforcement Learning": {},
+          "Online Learning": {},
+          "Contrastive Learning": {}
+        },
+        Tasks:{
+          "Classification": {},
+          "Segmentation": {},
+          "Generation":{}
+        },
+        "Deep Learning": {
+          "Deep Q-Learning": {},
+          "Object Classification": {},
+          "Object Detection": {},
+          "Image Segmentation": {},
+          "Image Generation": {},
+          "Neural Style Transfer": {},
+          "Speech Recognition": {},
+          "Language Modeling": {},
+          "Attention Mechanisms": {},
+          "Multi-Modal Learning": {},
+          "Encoder-Decoder Architectures": {},
+          "Meta Learning": {},
+          "Curriculum Learning": {}
+        },
+        "Machine Learning": {
+          "Supervised Algorithms": {
+            "SVM": {},
+            "KNN": {},
+            "Decision Trees": {},
+            "Random Forest": {},
+            "Gradient Boosting": {},
+            "Naive Bayes": {},
+            "Linear Regression": {},
+            "Logistic Regression": {}
+          },
+          "Unsupervised Algorithms": {
+            "K-Means Clustering": {},
+            "Hierarchical Clustering": {},
+            "DBSCAN": {},
+            "Mixture of Gaussians": {},
+            "Dimensionality Reduction": {},
+            "Anomaly Detection": {}
+          },
+          "Probabilistic Models": {
+            "Hidden Markov Models": {},
+            "Baum-Welch": {},
+            "Forward-Backward Algorithm": {},
+            "Bayesian Networks": {}
+          },
+          "Ensemble Learning": {
+            "Bagging": {},
+            "Boosting": {},
+            "Stacking": {}
+          }
+        },
+        "3D Deep Learning": {
+          "Point Cloud": {},
+          "3D Object Detection": {},
+          "Scene Reconstruction": {},
+          "3D Segmentation": {},
+          "Mesh Processing": {},
+          "Voxel Networks": {}
+        },
+        "Computer Vision": {
+          "Object Classification": {},
+          "Object Detection": {},
+          "Image Segmentation": {},
+          "Super Resolution": {},
+          "Stereo Depth Estimation": {},
+          "Optical Flow Estimation": {},
+          "Underwater Vision": {},
+          "Gaze Tracking": {},
+          "3D Perception": {},
+          "Image Processing": {},
+          "Action Recognition": {}
+        }
   },
-
   "AI & Search Algorithms": {
     "Artificial Intelligence": {
       "AI Fundamentals": {
@@ -300,7 +353,16 @@ const hierarchy: TagNode = {
       Microcontrollers: {},
       RTOS: {},
       "Real-Time Scheduling": {}
-    }
+    },
+    "Energy & Smart Systems": {
+      "Smart Grid": {
+        HEMS: {},
+        "Energy Optimization": {},
+        "Battery Storage": {},
+        "Heat Pump Control": {},
+        "Load Forecasting": {}
+      }
+    },
   },
 
   "Graphics & Visualization": {
@@ -428,6 +490,20 @@ const hierarchy: TagNode = {
       GitHubActions: {},
       Jenkins: {},
       CI_CD: {}
+    },
+    "Dev Tools & IDEs": {
+      Editors: {
+        VSCode: {},
+        Vim: {},
+        Emacs: {}
+      },
+      Tooling: {
+        Git: {},
+        Bash: {},
+        Make: {},
+        CMake: {},
+        Jupyter: {}
+      }
     }
   },
 
@@ -515,15 +591,7 @@ const hierarchy: TagNode = {
     }
   },
 
-  "Energy & Smart Systems": {
-    "Smart Grid": {
-      HEMS: {},
-      "Energy Optimization": {},
-      "Battery Storage": {},
-      "Heat Pump Control": {},
-      "Load Forecasting": {}
-    }
-  },
+
 
   "Localization & Wireless": {
     Bluetooth: {
@@ -582,20 +650,7 @@ const hierarchy: TagNode = {
     "John NeuroBionics Lab": {}
   },
 
-  "Dev Tools & IDEs": {
-    Editors: {
-      VSCode: {},
-      Vim: {},
-      Emacs: {}
-    },
-    Tooling: {
-      Git: {},
-      Bash: {},
-      Make: {},
-      CMake: {},
-      Jupyter: {}
-    }
-  }
+
 };
 
 export { hierarchy };
