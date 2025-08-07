@@ -25,6 +25,17 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.intro-text {
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .intro-text {
+    padding: 1rem;
+  }
+}
+
+
 .intro-text h1 {
   font-size: 2rem;
   margin-bottom: 1rem;

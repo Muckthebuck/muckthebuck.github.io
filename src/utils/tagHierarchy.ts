@@ -4,32 +4,36 @@ export type TagNode = {
 
 const hierarchy: TagNode = {
   "Programming Languages & Frameworks": {
-    "Low-level Programming Language": {
-      C: {},
+    "Low-level Programming Languages": {
+      "C": {},
       "C++": {},
-      Rust: {}
+      "Rust": {}
     },
-    "High-level Programming Language": {
-      Python: {},
-      TypeScript: {},
-      JavaScript: {},
-      Java: {},
-      Go: {},
-      Kotlin: {},
-      Swift: {},
+    "High-level Programming Languages": {
+      "Python": {},
+      "TypeScript": {},
+      "JavaScript": {},
+      "Java": {},
+      "Go": {},
+      "Kotlin": {},
+      "Swift": {},
       "C#": {},
-      MATLAB: {}
+      "MATLAB": {}
     },
     "Frameworks": {
-      React: {},
-      Vue: {},
-      NextJS: {},
-      Django: {},
-      Flask: {},
-      Android: {}
+      "Frontend Frameworks": {
+        "React": {},
+        "Vue.js": {},
+        "NextJS": {}
+      },
+      "Backend Frameworks": {
+        "Django": {},
+        "Flask": {},
+        "Android": {}
+      }
     },
-    "Compilers and more": {
-      LLVM: {},
+    "Compilers & Tooling": {
+      "LLVM": {},
       "WebAssembly": {},
       "GCC": {},
       "Clang": {},
@@ -39,30 +43,56 @@ const hierarchy: TagNode = {
       "Numba": {}
     }
   },
-
-  "Machine Learning & Deep Learning": {
-        "Frameworks & Libraries": {
-          "General ML/DL Frameworks": {
-            "TensorFlow": {},
-            "PyTorch": {},
-            "Keras": {},
-            "JAX": {},
-            "scikit-learn": {},
-            "scikit-image": {},
-            "OpenCV": {}
-          },
-          "Natural Language Processing (NLP)": {
-            "Hugging Face": {},
-            "spaCy": {},
-            "NLTK": {},
-            "Transformers": {}
-          },
-          "Model Deployment & Interfaces": {
+"Tools & Libraries": {
+  "Shared Libraries": {
+    "Scientific Computing": {
+      "NumPy": {},
+      "Pandas": {},
+      "SciPy": {},
+      "Matplotlib": {},
+      "scikit-learn": {},
+      "scikit-image": {}
+    },
+    "Machine Learning Libraries": {
+      "TensorFlow": {},
+      "PyTorch": {},
+      "Keras": {},
+      "JAX": {},
+      "OpenCV": {},
+      "Transformers": {},
+      "Hugging Face": {},
+      "spaCy": {},
+      "NLTK": {}
+    },
+    "Model Deployment & Interfaces": {
             "FastAPI": {},
             "Streamlit": {},
             "Gradio": {}
           }
-        },
+  },
+  "Development Tools & IDEs": {
+    "Editors": {
+      "VSCode": {},
+      "Vim": {},
+      "Emacs": {}
+    },
+    "Tooling": {
+      "Git": {},
+      "Bash": {},
+      "Make": {},
+      "CMake": {},
+      "Jupyter": {}
+    }
+  },
+  "Data Visualization": {
+    "Matplotlib": {},
+    "Plotly": {},
+    "D3.js": {},
+    "ThreeJS": {}
+  }
+},
+
+  "Machine Learning & Deep Learning": {
         "Neural Network Types": {
           "DNN": {},
           "CNN": {},
@@ -95,11 +125,29 @@ const hierarchy: TagNode = {
           "Online Learning": {},
           "Contrastive Learning": {}
         },
-        Tasks:{
-          "Classification": {},
-          "Segmentation": {},
-          "Generation":{}
-        },
+         "Tasks by Domain": {
+            "Vision": {
+              "Image Classification": {},
+              "Object Detection": {},
+              "Image Segmentation": {},
+              "Image Generation": {},
+              "SLAM": {}
+            },
+            "NLP": {
+              "Language Modeling": {},
+              "Sentiment Analysis": {},
+              "Text Classification": {},
+              "Machine Translation": {},
+              "Question Answering": {}
+            },
+            "General": {
+              "Classification": {},
+              "Regression": {},
+              "Clustering": {},
+              "Dimensionality Reduction": {},
+              "Segmentation":{}
+            }
+          },
         "Deep Learning": {
           "Deep Q-Learning": {},
           "Object Classification": {},
@@ -116,7 +164,7 @@ const hierarchy: TagNode = {
           "Curriculum Learning": {}
         },
         "Machine Learning": {
-          "Supervised Algorithms": {
+          "Supervised Learning": {
             "SVM": {},
             "KNN": {},
             "Decision Trees": {},
@@ -126,13 +174,28 @@ const hierarchy: TagNode = {
             "Linear Regression": {},
             "Logistic Regression": {}
           },
-          "Unsupervised Algorithms": {
+          "Unsupervised Learning": {
             "K-Means Clustering": {},
             "Hierarchical Clustering": {},
             "DBSCAN": {},
             "Mixture of Gaussians": {},
             "Dimensionality Reduction": {},
             "Anomaly Detection": {}
+          },
+          "Reinforcement Learning": {
+            "Multi-Agent Reinforcement Learning (MARL)":{},
+            "Q-Learning": {},
+            "SARSA": {},
+            "Deep Q-Networks (DQN)": {},
+            "Policy Gradient Methods": {},
+            "Actor-Critic Methods": {},
+            "Monte Carlo Methods": {},
+            "Temporal Difference Learning": {},
+            "Memory Abstraction":{
+              "Replay Memory":{},
+              "Episodic Memory":{},
+              "Semantic Memory":{}
+            }
           },
           "Probabilistic Models": {
             "Hidden Markov Models": {},
@@ -146,28 +209,60 @@ const hierarchy: TagNode = {
             "Stacking": {}
           }
         },
-        "3D Deep Learning": {
-          "Point Cloud": {},
-          "3D Object Detection": {},
-          "Scene Reconstruction": {},
-          "3D Segmentation": {},
-          "Mesh Processing": {},
-          "Voxel Networks": {}
+        "State Abstraction":{
+              "Equivariance":{},
+              "Invariance":{}
         },
-        "Computer Vision": {
-          "Object Classification": {},
-          "Object Detection": {},
-          "Image Segmentation": {},
-          "Super Resolution": {},
-          "Stereo Depth Estimation": {},
-          "Optical Flow Estimation": {},
-          "Underwater Vision": {},
-          "Gaze Tracking": {},
-          "3D Perception": {},
-          "Image Processing": {},
-          "Action Recognition": {}
+        "Pattern Detection":{
+
+        },
+        "Model Validation":{
+          "Monte-Carlo Trials":{}
         }
   },
+"Computer Vision": {
+  "Low-Level Vision": {
+    "Image Processing": {
+      "Edge Detection": {},
+      "Morphological Operations": {},
+      "Histogram Equalization": {},
+      "Image Filtering": {},
+      "Super Resolution": {}
+    },
+    "Optical Flow Estimation": {},
+    "Stereo Depth Estimation": {}
+  },
+  "Mid-Level Vision": {
+    "Image Segmentation": {},
+    "Object Detection": {},
+    "Object Classification": {},
+    "3D Perception": {},
+    "Pose Estimation": {},
+    "Gaze Tracking": {}
+  },
+  "High-Level Vision": {
+    "Action Recognition": {},
+    "Object Tracking": {},
+    "Facial Recognition": {},
+    "OCR": {},
+    "Image Generation": {},
+    "Visual SLAM": {},
+    "Underwater Vision": {}
+  },
+  "3D Deep Learning": {
+    "Stereo Vision": {},
+    "Structure from Motion": {},
+    "Multi-view Geometry": {},
+    "3D Reconstruction": {},
+    "3D Modeling": {},
+    "3D Registration": {},
+    "Point Cloud": {},
+    "Scene Reconstruction": {},
+    "3D Segmentation": {},
+    "Mesh Processing": {},
+    "Voxel Networks": {}
+  }
+},
   "AI & Search Algorithms": {
     "Artificial Intelligence": {
       "AI Fundamentals": {
@@ -271,7 +366,10 @@ const hierarchy: TagNode = {
       "Hybrid MPC": {},
       "Adaptive-Control": {},
       "PID Control": {},
-      "Optimal Control": {}
+      "Optimal Control": {},
+      "Traffic Control":{
+        "Congestion Control":{}
+      }
     },
     "Signal Processing": {
       "Speech Recognition": {},
@@ -297,19 +395,51 @@ const hierarchy: TagNode = {
       "Hilbert Transform": {}
     },
     "System Identification": {
-      "System Modeling": {},
-      "Parameter Estimation": {},
-      "State Estimation": {},
-      "Kalman Filter": {},
-      "Extended Kalman Filter": {},
-      "Unscented Kalman Filter": {},
-      "Particle Filter": {},
-      "System Dynamics": {},
-      "Dynamical Systems": {},
-      "Kernel Regression": {},
-      "ARMAX": {},
-      "Gaussian Processes": {}
+      "Model Types": {
+        "Linear System Identification": {},
+        "Nonlinear System Identification": {}
+      },
+      "Parametric Models": {
+        "ARX": {},
+        "ARMAX": {},
+        "OE (Output Error)": {},
+        "Box-Jenkins": {},
+        "State Space Models": {}
+      },
+      "Nonparametric Methods": {
+        "Frequency Response Analysis": {},
+        "Correlation Methods": {},
+        "Spectral Analysis": {},
+        "Kernel Regression": {},
+        "Gaussian Processes": {}
+      },
+      "Estimation Techniques": {
+        "Parameter Estimation": {
+          "Least Squares": {},
+          "Recursive Least Squares": {},
+          "Maximum Likelihood": {},
+          "Bayesian Estimation": {}
+        },
+        "State Estimation": {
+          "Kalman Filter": {},
+          "Extended Kalman Filter": {},
+          "Unscented Kalman Filter": {},
+          "Particle Filter": {}
+        }
+      },
+      "Model Validation": {
+        "Cross-Validation": {},
+        "Residual Analysis": {},
+        "Prediction Error": {},
+        "Fit Percentage": {}
+      },
+      "System Modeling & Dynamics": {
+        "System Modeling": {},
+        "System Dynamics": {},
+        "Dynamical Systems": {}
+      }
     },
+
     Robotics: {
       SLAM: {},
       "Path Planning": {},
@@ -323,7 +453,8 @@ const hierarchy: TagNode = {
       IMU: {},
       LiDAR: {},
       Cameras: {},
-      Encoders: {}
+      Encoders: {},
+      "Sensor Fusion":{},
     },
     "Communication & Interfaces": {
       "CAN Bus": {},
@@ -365,80 +496,167 @@ const hierarchy: TagNode = {
     },
   },
 
-  "Graphics & Visualization": {
-    "Computer Graphics":{
-      "Computational Geometry":{
-        "Polygon Cutting":{},
-        "Geometric Algorithms":{},
-        "Polygon Clipping":{},
-        "Geometric Data Structures":{
-        "Doubly Connected Edge List (DCEL)":{}
-        },
-        "Voronoi Diagram":{}
+"Graphics & Visualization": {
+  "Computer Graphics": {
+    "Computational Geometry": {
+      "Polygon Cutting": {
+        "Convex Partitioning": {}
       },
-      "Graphics Pipeline":{
-      "Rendering":{}
+      "Geometric Algorithms": {
+        "Routing Geometry": {}
       },
-      "Rendering Engines": {
-        OpenGL: {},
-        WebGL: {},
-        Vulkan: {},
-        Unity: {},
-        Unreal: {},
-        Godot: {}
+      "Polygon Clipping": {
+        "Cut Operations": {}
       },
-      "Shaders & Effects": {
-        "Shader Engines":{
-          Cg: {},
-          GLSL: {},
-          HLSL: {},
-          "Physically Based Rendering": {},
-          GPGPU: {}
-        },
-        "Shader methods":{
-            "Phong Shading": {},
-            "Gouraud Shading": {},
-            "Lighting Models": {}
+      "Geometric Data Structures": {
+        "Doubly Connected Edge List (DCEL)": {
+          "DCEL Cutting Operation": {}
         }
       },
-      "3D Modeling": {
-        Blender: {},
-        "Mesh Processing": {},
-        "Ray Tracing": {},
-        Shaders: {}
-      },
-      "Procedural Generation":{
-        "Wave Function Collapse": {},
-        "Level Design": {}
-      },
+      "Voronoi Diagram": {
+        "Watchtower Regions": {}
+      }
     },
-    Visualization: {
-        D3: {},
-        Matplotlib: {},
-        Plotly: {},
-        "Graph Visualization": {},
-        ThreeJS: {}
+    "Graphics Pipeline": {
+      "Rendering": {
+        "Rasterization": {},
+        "Ray Tracing": {
+          "Reflection & Refraction": {},
+          "Anti-Aliasing": {},
+          "Snell's Law": {},
+          "Fresnel Effect": {},
+          "OBJ Model Support": {},
+          "Custom Camera Orientation": {},
+          "Shadows":{}
+        }
+      }
+    },
+    "Rendering Engines": {
+      "OpenGL": {},
+      "WebGL": {},
+      "Vulkan": {},
+      "Unity": {
+        "Shader Development": {
+          "Phong Illumination Model": {},
+          "Gouraud Shading": {},
+          "Lighting Pipeline Implementation": {}
+        }
       },
-    
-    "Game": {
-      "Game Design":{
-        "Level Design":{},
-        "Gameplay Design": {},
-        "3D Modelling": {}
+      "Unreal": {},
+      "Godot": {}
+    },
+    "Shaders & Effects": {
+      "Shader Engines": {
+        "Cg": {},
+        "GLSL": {},
+        "HLSL": {
+          "Unity HLSL": {}
+        },
+        "Physically Based Rendering": {},
+        "GPGPU": {}
       },
-      "3D Platformer": {},
-      "Playtesting":{}
+      "Shader methods": {
+        "Phong Shading": {},
+        "Gouraud Shading": {},
+        "Lighting Models": {
+          "Vertex-Based Lighting": {},
+          "Fragment-Based Lighting": {}
+        }
+      }
+    },
+    "3D Modeling": {
+      "Blender": {},
+      "Mesh Processing": {
+        "Triangle Meshes": {},
+        "OBJ Parsing": {}
+      },
+      "Ray Tracing": {
+        "Recursive Ray Tracing": {},
+        "Ray-Object Intersection": {}
+      },
+      "Shaders": {}
+    },
+    "Procedural Generation": {
+      "Wave Function Collapse": {},
+      "Level Design": {}
     }
   },
-
-  "Math & Theory": {
-    "Linear Algebra": {},
-    "Numerical Optimization": {},
-    "Probability & Statistics": {},
-    "Information Theory": {},
-    "Graph Theory": {},
-    "Physics": {}
+  "Visualization": {
+    "D3": {},
+    "Matplotlib": {},
+    "Plotly": {},
+    "Graph Visualization": {},
+    "ThreeJS": {}
   },
+  "Game": {
+    "Game Design": {
+      "Level Design": {},
+      "Gameplay Design": {},
+      "3D Modelling": {}
+    },
+    "3D Platformer": {},
+    "Playtesting": {}
+  }
+},
+
+"Math & Theory": {
+  "Linear Algebra": {
+    "Matrix Decompositions": {},
+    "Spectral Theory": {}
+  },
+  "Numerical Optimization": {
+    "Convex Optimization": {},
+    "Gradient-Based Methods": {},
+    "Constrained Optimization": {}
+  },
+  "Probability & Statistics": {
+    "Probability Distributions": {},
+    "Bayesian Inference": {},
+    "Hypothesis Testing": {},
+    "Stochastic Processes": {
+      "Markov Chains": {},
+      "Markov Decision Processes": {},
+      "Martingales": {},
+      "Poisson Processes": {}
+    }
+  },
+  "Information Theory": {
+    "Entropy & Mutual Information": {},
+    "KL Divergence": {},
+    "Data Compression": {}
+  },
+  "Graph Theory": {
+    "Graph Traversal": {},
+    "Spectral Graph Theory": {},
+    "Random Graphs": {}
+  },
+  "Physics": {
+    "Symmetry":{},
+    "Classical Mechanics": {
+      "Noether's Theorem": {},
+      "Lagrangian Mechanics":{},
+      "Hamiltonian Mechanics":{},
+      "Energy Conservation":{},
+    },
+    "Statistical Mechanics": {},
+    "Dynamical Systems": {}
+  },
+  "Game Theory": {
+    "Nash Equilibrium": {},
+    "Stochastic Games": {}
+  },
+  "Control Theory": {
+    "Feedback Control": {},
+    "Optimal Control": {},
+    "Stochastic Control": {}
+  },
+  "Calculus & Analysis": {
+    "Real Analysis": {},
+    "Multivariable Calculus": {},
+    "Differential Equations": {}
+  }
+},
+
 
   "Data Science & Analysis": {
     "Data Analysis": {
@@ -587,7 +805,9 @@ const hierarchy: TagNode = {
     "Distributed Systems": {
       "Data Center": {},
       Kubernetes: {},
-      "Message Queues": {}
+      "Message Queues": {},
+      "Sensor Networks":{},
+
     }
   },
 

@@ -67,7 +67,7 @@ const Intro: React.FC = () => {
 
         <p>
           I'm a researcher and engineer passionate about building robust, intelligent systems that bridge 
-          <span className="highlight"> machine learning, system identificaiton, and robotics </span>. Currently completing a 
+          <span className="highlight"> machine learning, system identificaiton, and robotics</span>. Currently completing a 
           <span className="highlight"> Master’s in Electrical Engineering (Autonomous Systems) </span>  
           at the 
           <span className="highlight"> University of Melbourne</span> (expected <span className="highlight">December 2025</span>).
