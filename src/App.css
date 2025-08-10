@@ -18,18 +18,3 @@
 }
 
 /* App.css or TopBar.css */
-@keyframes contactPulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(253, 224, 71, 0.7); /* yellow */
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(253, 224, 71, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(253, 224, 71, 0);
-  }
-}
-
-.contact-highlight {
-  animation: contactPulse 1.5s ease-out;
-}
